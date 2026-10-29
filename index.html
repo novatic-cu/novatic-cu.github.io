@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NOVATIC — El ecosistema operativo del empresariado cubano</title>
+<meta name="description" content="NOVATIC S.U.R.L. — Marketplace, logística de última milla y software empresarial en una sola infraestructura. Diseñado para compañías que operan con estándares exigentes." />
+<link rel="stylesheet" href="fonts.css" />
+<style>
+/* ============================================================
+   NOVATIC — Landing corporativa + panel de administración
+   Plantilla de un solo archivo. Todo el contenido es editable.
+   ============================================================ */
+
+:root {
+  --ink: #0A1420;
+  --navy: #0F1E31;
+  --navy-2: #16283F;
+  --gold: #B8985A;
+  --gold-soft: #D9C89C;
+  --paper: #FAFAF7;
+  --paper-2: #F2EFE8;
+  --white: #FFFFFF;
+  --line: #E4E1D8;
+  --line-2: #D4D0C4;
+  --line-dark: rgba(255, 255, 255, 0.1);
+  --text: #0F1A28;
+  --text-soft: #58626E;
+  --text-mute: #8A93A0;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --container: 1240px;
+  --radius: 3px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea { font: inherit; color: inherit; }
+
+::selection { background: var(--gold); color: var(--ink); }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed; inset: 0 0 auto 0;
+  z-index: 100;
+  padding: 22px 0;
+  color: #fff;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease), padding 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.site-header.scrolled {
+  background: rgba(250, 250, 247, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--text);
+  padding: 12px 0;
+  border-color: var(--line);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-name {
+  font-family: var(--serif);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1;
+}
+.brand-suffix {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+.nav { display: flex; gap: 34px; }
+.nav a {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  position: relative;
+  padding: 4px 0;
+  transition: opacity 0.2s;
+}
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.nav a:hover { opacity: 1; }
+.nav a:hover::after { transform: scaleX(1); }
+
+.menu-toggle {
+  display: none;
+  width: 32px; height: 32px;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px;
+  position: relative;
+}
+.menu-toggle span {
+  display: block; width: 22px; height: 1px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease);
+}
+body.menu-open .menu-toggle span:first-child { transform: translateY(3.5px) rotate(45deg); }
+body.menu-open .menu-toggle span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: currentColor;
+  border-color: currentColor;
+  opacity: 0.75;
+}
+.btn-ghost:hover { opacity: 1; background: rgba(255, 255, 255, 0.06); }
+.btn-sm { padding: 11px 18px; font-size: 11px; letter-spacing: 0.08em; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  padding: 190px 0 90px;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 90px 90px;
+  -webkit-mask-image: radial-gradient(ellipse at 20% 30%, black, transparent 72%);
+  mask-image: radial-gradient(ellipse at 20% 30%, black, transparent 72%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ""; position: absolute; top: 0; right: 0; width: 45%; height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(184, 152, 90, 0.09), transparent 62%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px; align-items: center;
+}
+.kicker {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.kicker-line { display: inline-block; width: 40px; height: 1px; background: var(--gold); }
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+.hero-subtitle {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 540px;
+  margin-bottom: 42px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-visual { position: relative; }
+.img-wrap { position: relative; overflow: hidden; border-radius: var(--radius); }
+.img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-img {
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hero-img img { filter: grayscale(0.3) contrast(1.05); }
+.hero-badge {
+  position: absolute;
+  bottom: 24px; left: -24px;
+  background: var(--ink);
+  border: 1px solid rgba(184, 152, 90, 0.4);
+  padding: 16px 22px;
+  border-radius: var(--radius);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.hero-badge-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-soft); }
+.hero-badge-value { font-family: var(--serif); font-size: 22px; }
+
+.hero-stats {
+  position: relative; z-index: 2;
+  margin-top: 90px; padding-top: 42px;
+  border-top: 1px solid var(--line-dark);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.hero-stat { padding: 0 32px; border-left: 1px solid var(--line-dark); }
+.hero-stat:first-child { border-left: none; padding-left: 0; }
+.hero-stat-value {
+  font-family: var(--serif);
+  font-size: 40px; line-height: 1;
+  color: var(--gold-soft);
+  margin-bottom: 8px;
+}
+.hero-stat-label {
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section { padding: 130px 0; position: relative; }
+.section-alt { background: var(--paper-2); }
+.section-dark { background: var(--ink); color: #fff; }
+.section-header { max-width: 720px; margin-bottom: 80px; }
+.section-header .kicker { color: var(--gold); }
+.section-dark .section-header .kicker { color: var(--gold-soft); }
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4.6vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.section-dark .section-title { color: #fff; }
+.section-subtitle {
+  font-size: 17px; line-height: 1.65;
+  color: var(--text-soft);
+  max-width: 620px;
+}
+.section-dark .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+
+/* ============================================================
+   PILLARS
+   ============================================================ */
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.pillar { padding: 52px 36px; border-left: 1px solid var(--line); transition: background 0.3s var(--ease); }
+.pillar:first-child { border-left: none; padding-left: 0; }
+.pillar:last-child { padding-right: 0; }
+.pillar:hover { background: rgba(184, 152, 90, 0.03); }
+.pillar-tag {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 26px; font-weight: 500;
+}
+.pillar-name {
+  font-family: var(--serif);
+  font-size: 38px; line-height: 1; font-weight: 400;
+  margin-bottom: 20px;
+}
+.pillar-desc { font-size: 15px; line-height: 1.65; color: var(--text-soft); margin-bottom: 30px; }
+.pillar-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.pillar-features li {
+  font-size: 13px; color: var(--text);
+  padding-left: 20px; position: relative;
+}
+.pillar-features li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 8px; height: 1px; background: var(--gold);
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
+.service-category { border-top: 1px solid var(--line-2); padding-top: 28px; }
+.service-category-name {
+  font-family: var(--serif);
+  font-size: 26px; font-weight: 400;
+  margin-bottom: 22px;
+}
+.service-list { list-style: none; }
+.service-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--text-soft);
+  transition: color 0.25s, padding 0.25s;
+}
+.service-list li::after {
+  content: "→";
+  font-size: 12px;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.service-list li:hover { color: var(--text); padding-left: 6px; }
+.service-list li:hover::after { opacity: 1; transform: translateX(0); }
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 42px 34px;
+  display: flex; flex-direction: column;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.product-card { text-decoration: none; color: inherit; }
+.products-grid.single { grid-template-columns: 1fr; max-width: 720px; }
+.products-grid.single .product-card { padding: 40px; }
+.product-cta { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 12px; }
+.product-card:hover .product-cta { text-decoration: underline; text-underline-offset: 3px; }
+.product-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+.product-tag {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 22px; font-weight: 500;
+}
+.product-name {
+  font-family: var(--serif);
+  font-size: 32px; font-weight: 400;
+  margin-bottom: 16px;
+}
+.product-desc { font-size: 14px; line-height: 1.65; color: var(--text-soft); flex: 1; margin-bottom: 26px; }
+.product-status {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 7px 14px; border: 1px solid var(--line-2); border-radius: 100px;
+  align-self: flex-start; color: var(--text-soft);
+}
+
+/* ============================================================
+   VALUES + STATS
+   ============================================================ */
+.values-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line-dark);
+}
+.value-item {
+  padding: 48px 44px;
+  border-bottom: 1px solid var(--line-dark);
+  border-right: 1px solid var(--line-dark);
+}
+.value-item:nth-child(2n) { border-right: none; }
+.value-item:nth-last-child(-n+2) { border-bottom: none; }
+.value-number {
+  font-family: var(--serif);
+  font-size: 22px; color: var(--gold-soft);
+  margin-bottom: 22px;
+}
+.value-title { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; }
+.value-desc { font-size: 15px; line-height: 1.65; color: rgba(255, 255, 255, 0.65); }
+
+.stats-row {
+  margin-top: 100px; padding-top: 52px;
+  border-top: 1px solid var(--line-dark);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat-item { padding: 0 32px; border-left: 1px solid var(--line-dark); }
+.stat-item:first-child { border-left: none; padding-left: 0; }
+.stat-value {
+  font-family: var(--serif);
+  font-size: 48px; line-height: 1;
+  color: var(--gold-soft);
+  margin-bottom: 10px;
+}
+.stat-label {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ============================================================
+   QUOTE
+   ============================================================ */
+.quote-section { padding: 140px 0; }
+.quote-container { max-width: 920px; margin: 0 auto; text-align: center; }
+.quote-mark {
+  font-family: var(--serif);
+  font-size: 130px; line-height: 0.5;
+  color: var(--gold);
+  margin-bottom: 24px;
+  user-select: none;
+}
+.quote-text {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 42px;
+}
+.quote-author { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); font-weight: 500; }
+.quote-role { display: block; margin-top: 6px; color: var(--text-mute); letter-spacing: 0.1em; font-weight: 400; }
+
+/* ============================================================
+   CTA / CONTACT
+   ============================================================ */
+.cta-card {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: ""; position: absolute; top: -50%; right: -20%; width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(184, 152, 90, 0.13), transparent 62%);
+  pointer-events: none;
+}
+.cta-card > * { position: relative; z-index: 1; }
+.cta-card .kicker { color: var(--gold-soft); }
+.cta-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.6vw, 60px);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+.cta-card p {
+  font-size: 17px; line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+.contact-info {
+  margin-top: 64px; padding-top: 42px;
+  border-top: 1px solid var(--line-dark);
+  display: flex; gap: 64px; flex-wrap: wrap;
+}
+.contact-item { display: flex; flex-direction: column; gap: 4px; }
+.contact-item-label {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.contact-item-value { font-size: 15px; }
+.contact-item-value a { transition: color 0.2s; }
+.contact-item-value a:hover { color: var(--gold-soft); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--ink);
+  color: #fff;
+  padding: 100px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 80px;
+}
+.footer-brand .brand-name { font-size: 28px; }
+.footer-tagline {
+  margin-top: 20px;
+  font-size: 13px; line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 290px;
+}
+.footer-col h5 {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 22px; font-weight: 500;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+.footer-col a { font-size: 14px; color: rgba(255, 255, 255, 0.65); transition: color 0.2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  padding-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px; flex-wrap: wrap;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+.footer-legal-links { display: flex; gap: 26px; }
+.footer-legal-links a:hover { color: #fff; }
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+.mobile-nav {
+  position: fixed; inset: 0;
+  background: var(--ink);
+  z-index: 95;
+  padding: 130px 32px 40px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+body.menu-open .mobile-nav { display: flex; }
+.mobile-nav a {
+  font-family: var(--serif);
+  font-size: 30px;
+  color: #fff;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--gold-soft); }
+.mobile-nav .btn { margin-top: 32px; align-self: flex-start; }
+
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.in-view { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   ADMIN TRIGGER + PILL
+   ============================================================ */
+#adminTrigger {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(10, 20, 32, 0.18);
+  cursor: pointer;
+  z-index: 200;
+  opacity: 0.35;
+  border: none;
+  transition: opacity 0.3s, background 0.3s, transform 0.3s;
+}
+#adminTrigger:hover { opacity: 1; background: var(--gold); transform: scale(1.2); }
+body.admin-mode #adminTrigger { display: none; }
+
+.admin-pill {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  z-index: 250;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 13px 22px;
+  border-radius: 100px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  display: none;
+  align-items: center; gap: 8px;
+}
+body.admin-mode .admin-pill { display: inline-flex; }
+.admin-pill::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ink);
+}
+
+/* ============================================================
+   ADMIN DRAWER
+   ============================================================ */
+.admin-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 460px; max-width: 100vw;
+  background: var(--white);
+  border-left: 1px solid var(--line);
+  z-index: 300;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.1);
+}
+.admin-drawer.open { transform: translateX(0); }
+.admin-drawer-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.admin-drawer-header h3 {
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 600;
+}
+.admin-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--text-soft);
+  transition: background 0.2s, color 0.2s;
+}
+.admin-close:hover { background: var(--paper-2); color: var(--text); }
+
+.admin-body {
+  flex: 1; overflow-y: auto;
+  padding: 8px 24px 40px;
+  font-size: 13px;
+}
+.admin-body::-webkit-scrollbar { width: 6px; }
+.admin-body::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 3px; }
+
+.admin-section { border-bottom: 1px solid var(--line); }
+.admin-section summary {
+  padding: 18px 0;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.admin-section summary::-webkit-details-marker { display: none; }
+.admin-section summary::after {
+  content: "+";
+  font-size: 16px;
+  color: var(--text-mute);
+  transition: transform 0.2s;
+}
+.admin-section[open] summary::after { content: "−"; }
+.admin-fields { padding-bottom: 20px; }
+
+.admin-field { margin-bottom: 12px; }
+.admin-field label {
+  display: block;
+  font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.admin-field input[type="text"],
+.admin-field input[type="url"],
+.admin-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--paper);
+  transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+}
+.admin-field input:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+}
+.admin-field textarea { min-height: 74px; font-family: var(--sans); line-height: 1.5; }
+
+.admin-item {
+  background: var(--paper);
+  padding: 16px;
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  position: relative;
+  border: 1px solid var(--line);
+}
+.admin-item .admin-field:last-child { margin-bottom: 0; }
+.admin-item-remove {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(200, 60, 60, 0.08);
+  color: #b83c3c;
+  font-size: 16px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.admin-item-remove:hover { background: rgba(200, 60, 60, 0.2); }
+
+.admin-btn {
+  padding: 9px 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.admin-btn:hover { border-color: var(--gold); background: var(--paper); }
+.admin-btn-primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+.admin-btn-primary:hover { background: var(--navy-2); border-color: var(--navy-2); }
+.admin-btn-danger { color: #b83c3c; border-color: rgba(184, 60, 60, 0.3); }
+.admin-btn-block { width: 100%; margin-top: 8px; }
+
+.admin-image-field {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+.admin-image-field img {
+  width: 56px; height: 56px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+}
+.admin-image-field input { margin: 0 !important; }
+
+.admin-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+.admin-actions .admin-btn { width: 100%; }
+.admin-actions .full { grid-column: 1 / -1; }
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(10, 20, 32, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 400;
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal.open { display: flex; }
+.modal-content {
+  background: var(--white);
+  padding: 42px;
+  border-radius: var(--radius);
+  max-width: 440px;
+  width: 100%;
+  animation: modalIn 0.3s var(--ease);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.modal-content h3 {
+  font-family: var(--serif);
+  font-size: 30px; font-weight: 400;
+  margin-bottom: 10px;
+}
+.modal-content p {
+  font-size: 13px; color: var(--text-soft);
+  margin-bottom: 26px; line-height: 1.55;
+}
+.modal-content input[type="password"],
+.modal-content input[type="text"],
+.modal-content input[type="url"] {
+  width: 100%; padding: 13px 15px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  font-size: 14px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+.modal-content input:focus { outline: none; border-color: var(--gold); }
+.modal-error {
+  color: #b83c3c; font-size: 12px;
+  margin-bottom: 12px;
+  min-height: 16px;
+}
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px; }
+
+.image-preview {
+  width: 100%; aspect-ratio: 16 / 10;
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-mute); font-size: 12px;
+}
+.image-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   INLINE EDIT (admin mode)
+   ============================================================ */
+body.admin-mode [data-edit]:not(a):not(button) {
+  outline: 1px dashed rgba(184, 152, 90, 0.5);
+  outline-offset: 5px;
+  cursor: text;
+  transition: outline-color 0.2s, background 0.2s;
+  min-width: 20px;
+  display: inline-block;
+  border-radius: 1px;
+}
+body.admin-mode [data-edit]:not(a):not(button):hover {
+  outline-color: var(--gold);
+  background: rgba(184, 152, 90, 0.06);
+}
+body.admin-mode [data-edit]:not(a):not(button):focus {
+  outline: 2px solid var(--gold);
+  background: rgba(184, 152, 90, 0.05);
+}
+body.admin-mode [data-edit-img] {
+  cursor: pointer;
+  position: relative;
+}
+body.admin-mode [data-edit-img]::after {
+  content: "Cambiar imagen";
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10, 20, 32, 0.65);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+body.admin-mode [data-edit-img]:hover::after { opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px) {
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 960px) {
+  .container { padding: 0 24px; }
+  .nav { display: none; }
+  .site-header .btn-primary { display: none; }
+  .menu-toggle { display: flex; }
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 460px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-left: none; border-bottom: 1px solid var(--line); padding: 40px 0; }
+  .pillar:first-child { padding-top: 44px; }
+  .pillar:last-child { padding-bottom: 44px; border-bottom: none; }
+  .services-grid { grid-template-columns: 1fr; gap: 44px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .value-item { border-right: none; padding: 36px 0; }
+  .value-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+  .value-item:last-child { border-bottom: none; }
+  .hero-stats { grid-template-columns: 1fr; gap: 0; }
+  .hero-stat { border-left: none; padding: 24px 0; border-top: 1px solid var(--line-dark); }
+  .hero-stat:first-child { border-top: none; padding-top: 0; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .stat-item { border-left: none; padding: 0; }
+  .cta-card { padding: 64px 32px; }
+  .contact-info { gap: 36px; }
+  .section { padding: 90px 0; }
+  .section-header { margin-bottom: 60px; }
+  .values-grid .value-number { font-size: 18px; }
+}
+
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .section { padding: 70px 0; }
+  .hero { padding: 140px 0 60px; }
+  .hero-title { font-size: 38px; }
+  .hero-badge { left: 12px; bottom: 12px; padding: 12px 16px; }
+  .hero-badge-value { font-size: 18px; }
+  .hero-stat-value { font-size: 32px; }
+  .stats-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .admin-drawer { width: 100vw; }
+  .modal-content { padding: 28px; }
+  .cta-card { padding: 48px 24px; }
+  .pillar-name { font-size: 32px; }
+  .product-name { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name" data-edit="brand.name">NOVATIC</span>
+      <span class="brand-suffix" data-edit="brand.suffix">S.U.R.L.</span>
+    </a>
+    <nav class="nav" id="mainNav"></nav>
+    <a class="btn btn-sm btn-primary" href="https://novatic-cu.github.io/NovaFlix/" id="headerCta" data-edit="navCta">Abrir NovaFlix</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<div class="mobile-nav" id="mobileNav"></div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="kicker">
+        <span class="kicker-line"></span>
+        <span data-edit="hero.kicker">Ciego de Ávila · Cuba</span>
+      </div>
+      <h1 class="hero-title" data-edit="hero.title">El ecosistema operativo del empresariado cubano.</h1>
+      <p class="hero-subtitle" data-edit="hero.subtitle">Marketplace, logística de última milla y software empresarial en una sola infraestructura. Diseñada para compañías que operan con estándares exigentes.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://novatic-cu.github.io/NovaFlix/" data-edit="hero.ctaPrimary">Abrir NovaFlix</a>
+        <a class="btn btn-ghost" href="#productos" data-edit="hero.ctaSecondary">Ver producto</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="img-wrap hero-img" data-edit-img="hero.image">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop" alt="NOVATIC" />
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-label">Operación</div>
+        <div class="hero-badge-value">CU · ES</div>
+      </div>
+    </div>
+  </div>
+  <div class="container hero-stats" id="heroStats"></div>
+</section>
+
+<!-- ============ PLATFORM PILLARS ============ -->
+<section class="section" id="plataforma">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="kicker"><span class="kicker-line"></span><span data-edit="pillars.kicker">La plataforma</span></div>
+      <h2 class="section-title" data-edit="pillars.title">Tres mundos. Una sola infraestructura.</h2>
+      <p class="section-subtitle" data-edit="pillars.subtitle">Cada componente opera de forma autónoma y se integra con los demás mediante APIs headless. El resultado: un ecosistema coherente donde el comercio, la logística y el software se alimentan entre sí.</p>
+    </header>
+    <div class="pillars-grid" id="pillarsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section" id="productos">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="kicker"><span class="kicker-line"></span><span data-edit="products.kicker">Productos SaaS</span></div>
+      <h2 class="section-title" data-edit="products.title">Software que opera donde su negocio lo necesita.</h2>
+      <p class="section-subtitle" data-edit="products.subtitle">Productos offline-first con licenciamiento criptográfico. Sin dependencia de conexión, con validación local y activación online cuando se requiera.</p>
+    </header>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ COMPANY / VALUES ============ -->
+<section class="section section-dark" id="compania">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="kicker"><span class="kicker-line"></span><span data-edit="values.kicker">Por qué NOVATIC</span></div>
+      <h2 class="section-title" data-edit="values.title">Principios que sostienen la operación.</h2>
+    </header>
+    <div class="values-grid" id="valuesGrid"></div>
+    <div class="stats-row" id="statsRow"></div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="section quote-section">
+  <div class="container quote-container reveal">
+    <div class="quote-mark">“</div>
+    <blockquote class="quote-text" data-edit="quote.text">La excelencia no se declara. Se construye en la arquitectura, se sostiene en la disciplina y se demuestra en cada detalle.</blockquote>
+    <div class="quote-author">
+      <span data-edit="quote.author">Marcos Javier Santana Delgado</span>
+      <span class="quote-role" data-edit="quote.role">Socio Único · NOVATIC S.U.R.L.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA / CONTACT ============ -->
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="kicker"><span class="kicker-line"></span><span data-edit="cta.kicker">Acceso</span></div>
+      <h2 data-edit="cta.title">Hablemos de su operación.</h2>
+      <p data-edit="cta.subtitle">Evaluamos cada incorporación de forma individual para preservar los estándares de la plataforma. Solicite una conversación inicial.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="mailto:contacto@novatic.cu" data-edit="cta.button">Solicitar acceso</a>
+        <a class="btn btn-ghost" href="#plataforma" data-edit="cta.secondary">Conocer la plataforma</a>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-value"><a href="mailto:contacto@novatic.cu" data-edit="contact.email">contacto@novatic.cu</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-value"><a href="tel:+5350000000" data-edit="contact.phone">+53 5 000 0000</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">Sede</span>
+          <span class="contact-item-value" data-edit="contact.address">Ciego de Ávila, Cuba</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-name" data-edit="brand.name">NOVATIC</span>
+          <span class="brand-suffix" data-edit="brand.suffix">S.U.R.L.</span>
+        </div>
+        <p class="footer-tagline" data-edit="footer.tagline">Negocios, Optimización y Ventajas en Aplicaciones y Tecnologías de la Información y la Comunicación.</p>
+      </div>
+      <div id="footerColumns" style="display: contents;"></div>
+    </div>
+    <div class="footer-bottom">
+      <span data-edit="footer.legal">© 2026 NOVATIC S.U.R.L. Todos los derechos reservados.</span>
+      <div class="footer-legal-links" id="footerLegalLinks"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ADMIN TRIGGER ============ -->
+<button id="adminTrigger" aria-label="Panel de administración" title="Administración"></button>
+<button class="admin-pill" id="adminPill">Panel</button>
+
+<!-- ============ LOGIN MODAL ============ -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Administración</h3>
+    <p>Ingrese la contraseña para editar el contenido del sitio.</p>
+    <input type="password" id="loginPass" placeholder="Contraseña" autocomplete="current-password" />
+    <div class="modal-error" id="loginError"></div>
+    <div class="modal-actions">
+      <button class="admin-btn" data-close-modal="loginModal">Cancelar</button>
+      <button class="admin-btn admin-btn-primary" id="loginSubmit">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ IMAGE MODAL ============ -->
+<div class="modal" id="imageModal">
+  <div class="modal-content">
+    <h3>Imagen</h3>
+    <p>Introduzca una URL o cargue un archivo desde su equipo.</p>
+    <div class="image-preview" id="imagePreview">Sin imagen</div>
+    <input type="url" id="imageUrl" placeholder="https://…" />
+    <input type="file" id="imageFile" accept="image/*" style="display:none" />
+    <div class="modal-actions">
+      <button class="admin-btn" id="imagePick">Cargar archivo</button>
+      <button class="admin-btn" data-close-modal="imageModal">Cancelar</button>
+      <button class="admin-btn admin-btn-primary" id="imageSubmit">Aplicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN DRAWER ============ -->
+<aside class="admin-drawer" id="adminDrawer">
+  <div class="admin-drawer-header">
+    <h3>Panel de administración</h3>
+    <button class="admin-close" id="adminClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="admin-body" id="adminBody"></div>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     CONSTANTES Y ESTADO
+     ============================================================ */
+  const STORAGE_KEY = 'novatic_content_v1';
+  const PASS_KEY = 'novatic_admin_pass_v1';
+  const DEFAULT_PASS = 'novatic2026';
+
+  const _testEl = document.createElement('div');
+  _testEl.setAttribute('contenteditable', 'plaintext-only');
+  const EDIT_ATTR = _testEl.contentEditable === 'plaintext-only' ? 'plaintext-only' : 'true';
+
+  /* ============================================================
+     CONTENIDO POR DEFECTO
+     ============================================================ */
+  const DEFAULT_CONTENT = {
+    brand: {
+      name: 'NOVATIC',
+      suffix: 'S.U.R.L.'
+    },
+    navCta: 'Abrir NovaFlix',
+    nav: [
+      { label: 'Plataforma', href: '#plataforma' },
+      { label: 'Productos', href: '#productos' },
+      { label: 'Compañía', href: '#compania' },
+      { label: 'Contacto', href: '#contacto' }
+    ],
+    hero: {
+      kicker: 'Ciego de Ávila · Cuba',
+      title: 'Software sobrio para operar con estándares exigentes.',
+      subtitle: 'NOVATIC construye infraestructura y software para compañías cubanas. Hoy nuestro único producto disponible es NovaFlix: un buscador de escritorio con índice local, listas y descargas reanudables.',
+      ctaPrimary: 'Abrir NovaFlix',
+      ctaSecondary: 'Ver producto',
+      image: 'assets/hero.svg',
+      stats: [
+        { value: '01', label: 'Producto disponible' },
+        { value: '03', label: 'Plataformas' },
+        { value: '0', label: 'Cuentas y telemetría' }
+      ]
+    },
+    pillars: {
+      kicker: 'Roadmap',
+      title: 'Lo que viene después de NovaFlix.',
+      subtitle: 'NovaFlix es hoy el único producto disponible. Estas tres líneas están en diseño y se publicarán cuando estén operativas; no se comercializan todavía.',
+      items: [
+        {
+          tag: '01 · Marketplace',
+          name: 'NOVAStore',
+          desc: 'Plataforma de venta multi-vendedor para PYMES mayoristas y minoristas. Catálogo versionado, checkout integrado y comisión transparente del 10 al 20% por categoría.',
+          features: ['Catálogo multi-vendedor', 'Checkout headless', 'Comisión por categoría']
+        },
+        {
+          tag: '02 · Logística',
+          name: 'NOVASend',
+          desc: 'Red de riders independientes con triciclos eléctricos. Asignación algorítmica por zona, disponibilidad y rating. Tracking en tiempo real y liquidación automática.',
+          features: ['Asignación algorítmica', 'Tracking en vivo', 'Riders verificados']
+        },
+        {
+          tag: '03 · Software',
+          name: 'NOVABiz',
+          desc: 'Suite de software empresarial para operar sin fricción: ERP, punto de venta y gestión de membresías. Licenciamiento offline con firma digital y activación online.',
+          features: ['ERP para PYMES', 'Punto de venta', 'Licencia offline']
+        }
+      ]
+    },
+    services: {
+      kicker: 'Servicios adicionales',
+      title: 'Capacidades a la medida de su operación.',
+      subtitle: 'Además de la plataforma, NOVATIC ofrece un portafolio de servicios tecnológicos y de marca para empresas que requieren acompañamiento especializado.',
+      categories: [
+        { name: 'Marketing y Marca', items: ['NOVAMark', 'NOVABrand', 'NOVASocial', 'NOVAMark Pro'] },
+        { name: 'Servicios Cloud', items: ['NOVACloud VPS', 'NOVACloud Host', 'NOVAMail', 'NOVADrive', 'NOVAAI', 'NOVAVPN'] },
+        { name: 'Tecnológicos', items: ['NOVADevOps', 'NOVACode', 'NOVANet', 'NOVASec', 'NOVAFix'] }
+      ]
+    },
+    products: {
+      kicker: 'Producto',
+      title: 'Software que ya está en tus manos.',
+      subtitle: 'Un producto disponible hoy. NovaFlix convierte catálogos multimedia públicos en una biblioteca privada de escritorio, con instaladores firmados para Linux, Windows y macOS.',
+      items: [
+        {
+          name: 'NovaFlix',
+          tag: 'Desktop · Linux / Windows / macOS',
+          desc: 'Buscador de escritorio con caché local: búsqueda instantánea, favoritos, listas y descargas reanudables. Repositorios APT y pacman propios, sin cuentas ni telemetría.',
+          status: 'Disponible · v0.1.0',
+          href: 'https://novatic-cu.github.io/NovaFlix/'
+        }
+      ]
+    },
+    values: {
+      kicker: 'Por qué NOVATIC',
+      title: 'Principios que sostienen la operación.',
+      items: [
+        { title: 'Infraestructura soberana', desc: 'Datos personales alojados exclusivamente en Cuba, en cumplimiento de la Ley 149/2022.' },
+        { title: 'Criptografía auditable', desc: 'Cadena de confianza de dos niveles con root offline, intermedias rotables y auditoría inmutable.' },
+        { title: 'Arquitectura headless', desc: 'Cada servicio expone APIs limpias. La interfaz es una consecuencia, no una restricción.' },
+        { title: 'Intermediación responsable', desc: 'Riders como socios independientes verificados. Marco legal alineado con los decretos 160/2026 y 167/2026.' }
+      ]
+    },
+    stats: {
+      items: [
+        { value: '10–20%', label: 'Comisión marketplace' },
+        { value: '15–25%', label: 'Comisión logística' },
+        { value: '2 VPS', label: 'Infraestructura CU + ES' },
+        { value: '10 años', label: 'Vida útil de root CA' }
+      ]
+    },
+    quote: {
+      text: 'La excelencia no se declara. Se construye en la arquitectura, se sostiene en la disciplina y se demuestra en cada detalle.',
+      author: 'Marcos Javier Santana Delgado',
+      role: 'Socio Único · NOVATIC S.U.R.L.'
+    },
+    cta: {
+      kicker: 'Acceso',
+      title: 'Hablemos de su operación.',
+      subtitle: 'Evaluamos cada incorporación de forma individual para preservar los estándares de la plataforma. Solicite una conversación inicial.',
+      button: 'Solicitar acceso',
+      secondary: 'Conocer la plataforma'
+    },
+    contact: {
+      email: 'contacto@novatic.cu',
+      phone: '+53 5 000 0000',
+      address: 'Ciego de Ávila, Cuba'
+    },
+    footer: {
+      tagline: 'Negocios, Optimización y Ventajas en Aplicaciones y Tecnologías de la Información y la Comunicación.',
+      columns: [
+        { title: 'Plataforma', links: ['NOVAStore', 'NOVASend', 'NOVAPay', 'NOVAID'] },
+        { title: 'Software', links: ['NOVABiz', 'NOVACaja', 'NOVAGym', 'NOVALicense'] },
+        { title: 'Servicios', links: ['NOVACloud', 'NOVAMark', 'NOVAFix', 'NOVADevOps'] },
+        { title: 'Compañía', links: ['Sobre NOVATIC', 'Contacto', 'Legal', 'Privacidad'] }
+      ],
+      legal: '© 2026 NOVATIC S.U.R.L. Todos los derechos reservados.',
+      legalLinks: ['Términos', 'Privacidad', 'Cookies']
+    }
+  };
+
+  /* ============================================================
+     UTILIDADES
+     ============================================================ */
+  function deepClone(obj) {
+    try { return structuredClone(obj); } catch (e) { return JSON.parse(JSON.stringify(obj)); }
+  }
+
+  function deepMerge(target, source) {
+    if (source === undefined || source === null) return target;
+    if (Array.isArray(source)) return source;
+    if (typeof source === 'object') {
+      const out = (target && typeof target === 'object' && !Array.isArray(target)) ? target : {};
+      for (const k in source) out[k] = deepMerge(out[k], source[k]);
+      return out;
+    }
+    return source;
+  }
+
+  function getByPath(obj, path) {
+    return path.split('.').reduce((o, k) => (o !== undefined && o !== null) ? o[k] : undefined, obj);
+  }
+
+  function setByPath(obj, path, value) {
+    const keys = path.split('.');
+    const last = keys.pop();
+    let cur = obj;
+    for (const k of keys) {
+      if (cur[k] === undefined || cur[k] === null) cur[k] = {};
+      cur = cur[k];
+    }
+    cur[last] = value;
+  }
+
+  function escapeHTML(s) {
+    return String(s === undefined || s === null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function escapeAttr(s) { return escapeHTML(s); }
+
+  async function loadPublished() {
+    try {
+      const res = await fetch('content.json', { cache: 'no-store' });
+      if (res.ok) published = await res.json();
+    } catch (e) {}
+  }
+
+  function loadContent() {
+    const base = deepMerge(deepClone(DEFAULT_CONTENT), published || {});
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return base;
+      return deepMerge(base, JSON.parse(raw));
+    } catch (e) {
+      return base;
+    }
+  }
+
+  function saveContent() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(content)); } catch (e) {}
+  }
+
+  let saveTimer = null;
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveContent, 250);
+  }
+
+  /* ============================================================
+     ESTADO GLOBAL
+     ============================================================ */
+  let content;
+  let published = null;
+  let adminMode = false;
+  let imageEditPath = null;
+  let imageDraft = '';
+
+  /* ============================================================
+     RENDER — SECCIONES DINÁMICAS
+     ============================================================ */
+  function renderNav() {
+    const nav = document.getElementById('mainNav');
+    if (nav) {
+      nav.innerHTML = content.nav.map((n, i) =>
+        `<a href="${escapeAttr(n.href)}" data-edit="nav.${i}.label">${escapeHTML(n.label)}</a>`
+      ).join('');
+    }
+
+    const mobile = document.getElementById('mobileNav');
+    if (mobile) {
+      mobile.innerHTML = content.nav.map((n, i) =>
+        `<a href="${escapeAttr(n.href)}" data-edit="nav.${i}.label">${escapeHTML(n.label)}</a>`
+      ).join('') + `<a class="btn btn-primary" href="#contacto">${escapeHTML(content.navCta)}</a>`;
+    }
+
+    const hc = document.getElementById('headerCta');
+    if (hc) hc.textContent = content.navCta;
+  }
+
+  function renderHeroStats() {
+    const el = document.getElementById('heroStats');
+    if (!el) return;
+    el.innerHTML = content.hero.stats.map((s) => `
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-edit="hero.stats.${content.hero.stats.indexOf(s)}.value">${escapeHTML(s.value)}</div>
+        <div class="hero-stat-label" data-edit="hero.stats.${content.hero.stats.indexOf(s)}.label">${escapeHTML(s.label)}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderPillars() {
+    const el = document.getElementById('pillarsGrid');
+    if (!el) return;
+    el.innerHTML = content.pillars.items.map((p, i) => `
+      <article class="pillar reveal">
+        <div class="pillar-tag" data-edit="pillars.items.${i}.tag">${escapeHTML(p.tag)}</div>
+        <h3 class="pillar-name" data-edit="pillars.items.${i}.name">${escapeHTML(p.name)}</h3>
+        <p class="pillar-desc" data-edit="pillars.items.${i}.desc">${escapeHTML(p.desc)}</p>
+        <ul class="pillar-features">
+          ${p.features.map((f, j) => `<li data-edit="pillars.items.${i}.features.${j}">${escapeHTML(f)}</li>`).join('')}
+        </ul>
+      </article>
+    `).join('');
+  }
+
+  function renderServices() {
+    const el = document.getElementById('servicesGrid');
+    if (!el) return;
+    el.innerHTML = content.services.categories.map((c, i) => `
+      <div class="service-category reveal">
+        <h3 class="service-category-name" data-edit="services.categories.${i}.name">${escapeHTML(c.name)}</h3>
+        <ul class="service-list">
+          ${c.items.map((it, j) => `<li data-edit="services.categories.${i}.items.${j}">${escapeHTML(it)}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  function renderProducts() {
+    const el = document.getElementById('productsGrid');
+    if (!el) return;
+    el.innerHTML = content.products.items.map((p, i) => {
+      const inner = `
+        <div class="product-tag" data-edit="products.items.${i}.tag">${escapeHTML(p.tag)}</div>
+        <h3 class="product-name" data-edit="products.items.${i}.name">${escapeHTML(p.name)}</h3>
+        <p class="product-desc" data-edit="products.items.${i}.desc">${escapeHTML(p.desc)}</p>
+        <span class="product-status" data-edit="products.items.${i}.status">${escapeHTML(p.status)}</span>
+        ${p.href ? '<span class="product-cta">Abrir →</span>' : ''}
+      `;
+      return p.href
+        ? `<a class="product-card reveal" href="${escapeAttr(p.href)}">${inner}</a>`
+        : `<article class="product-card reveal">${inner}</article>`;
+    }).join('');
+    el.classList.toggle('single', content.products.items.length === 1);
+  }
+
+  function renderValues() {
+    const el = document.getElementById('valuesGrid');
+    if (!el) return;
+    el.innerHTML = content.values.items.map((v, i) => `
+      <div class="value-item reveal">
+        <div class="value-number">0${i + 1}</div>
+        <h3 class="value-title" data-edit="values.items.${i}.title">${escapeHTML(v.title)}</h3>
+        <p class="value-desc" data-edit="values.items.${i}.desc">${escapeHTML(v.desc)}</p>
+      </div>
+    `).join('');
+  }
+
+  function renderStats() {
+    const el = document.getElementById('statsRow');
+    if (!el) return;
+    el.innerHTML = content.stats.items.map((s, i) => `
+      <div class="stat-item reveal">
+        <div class="stat-value" data-edit="stats.items.${i}.value">${escapeHTML(s.value)}</div>
+        <div class="stat-label" data-edit="stats.items.${i}.label">${escapeHTML(s.label)}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderFooter() {
+    const cols = document.getElementById('footerColumns');
+    if (cols) {
+      cols.innerHTML = content.footer.columns.map((c, i) => `
+        <div class="footer-col">
+          <h5 data-edit="footer.columns.${i}.title">${escapeHTML(c.title)}</h5>
+          <ul>
+            ${c.links.map((l, j) => `<li><a href="#" data-edit="footer.columns.${i}.links.${j}">${escapeHTML(l)}</a></li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+    const legalLinks = document.getElementById('footerLegalLinks');
+    if (legalLinks) {
+      legalLinks.innerHTML = content.footer.legalLinks.map((l, i) =>
+        `<a href="#" data-edit="footer.legalLinks.${i}">${escapeHTML(l)}</a>`
+      ).join('');
+    }
+  }
+
+  function applyToDOM() {
+    document.querySelectorAll('[data-edit]').forEach((el) => {
+      const val = getByPath(content, el.dataset.edit);
+      if (val === undefined || val === null) return;
+      if (el.textContent !== String(val)) el.textContent = val;
+    });
+    document.querySelectorAll('[data-edit-img]').forEach((wrap) => {
+      const img = wrap.querySelector('img');
+      const val = getByPath(content, wrap.dataset.editImg);
+      if (img && val && img.getAttribute('src') !== val) img.src = val;
+    });
+    document.querySelectorAll('[data-thumb]').forEach((img) => {
+      const val = getByPath(content, img.dataset.thumb);
+      if (val) img.src = val;
+    });
+  }
+
+  function enableEditable() {
+    document.querySelectorAll('[data-edit]').forEach((el) => {
+      if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+        el.removeAttribute('contenteditable');
+        return;
+      }
+      if (adminMode) {
+        if (!el.hasAttribute('contenteditable')) el.setAttribute('contenteditable', EDIT_ATTR);
+      } else {
+        el.removeAttribute('contenteditable');
+      }
+    });
+    document.body.classList.toggle('admin-mode', adminMode);
+  }
+
+  /* ============================================================
+     REVEAL
+     ============================================================ */
+  let revealObserver = null;
+  function initReveal() {
+    if (revealObserver) revealObserver.disconnect();
+    const els = document.querySelectorAll('.reveal:not(.in-view)');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('in-view'));
+      return;
+    }
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    els.forEach((el) => revealObserver.observe(el));
+  }
+
+  /* ============================================================
+     RENDER MAESTRO
+     ============================================================ */
+  function renderAll() {
+    renderNav();
+    renderHeroStats();
+    renderPillars();
+    renderServices();
+    renderProducts();
+    renderValues();
+    renderStats();
+    renderFooter();
+    applyToDOM();
+    enableEditable();
+    initReveal();
+  }
+
+  /* ============================================================
+     ADMIN — ESQUEMA DEL PANEL
+     ============================================================ */
+  const ADMIN_SECTIONS = [
+    {
+      title: 'Marca y navegación',
+      fields: [
+        { label: 'Nombre', path: 'brand.name' },
+        { label: 'Sufijo', path: 'brand.suffix' },
+        { label: 'Texto botón header', path: 'navCta' }
+      ],
+      lists: [
+        { label: 'Enlaces del menú', path: 'nav', template: { label: 'Enlace', href: '#' },
+          itemFields: [
+            { label: 'Etiqueta', key: 'label' },
+            { label: 'Enlace', key: 'href' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Hero',
+      fields: [
+        { label: 'Kicker', path: 'hero.kicker' },
+        { label: 'Título', path: 'hero.title', type: 'textarea' },
+        { label: 'Subtítulo', path: 'hero.subtitle', type: 'textarea' },
+        { label: 'Botón primario', path: 'hero.ctaPrimary' },
+        { label: 'Botón secundario', path: 'hero.ctaSecondary' },
+        { label: 'Imagen', path: 'hero.image', type: 'image' }
+      ],
+      lists: [
+        { label: 'Estadísticas', path: 'hero.stats', template: { value: '00', label: 'Etiqueta' },
+          itemFields: [
+            { label: 'Valor', key: 'value' },
+            { label: 'Etiqueta', key: 'label' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Plataforma (pilares)',
+      fields: [
+        { label: 'Kicker', path: 'pillars.kicker' },
+        { label: 'Título', path: 'pillars.title', type: 'textarea' },
+        { label: 'Subtítulo', path: 'pillars.subtitle', type: 'textarea' }
+      ],
+      lists: [
+        { label: 'Pilares', path: 'pillars.items',
+          template: { tag: '', name: '', desc: '', features: [] },
+          itemFields: [
+            { label: 'Etiqueta', key: 'tag' },
+            { label: 'Nombre', key: 'name' },
+            { label: 'Descripción', key: 'desc', type: 'textarea' },
+            { label: 'Características (una por línea)', key: 'features', type: 'list' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Productos SaaS',
+      fields: [
+        { label: 'Kicker', path: 'products.kicker' },
+        { label: 'Título', path: 'products.title', type: 'textarea' },
+        { label: 'Subtítulo', path: 'products.subtitle', type: 'textarea' }
+      ],
+      lists: [
+        { label: 'Productos', path: 'products.items',
+          template: { name: '', tag: '', desc: '', status: '', href: '' },
+          itemFields: [
+            { label: 'Nombre', key: 'name' },
+            { label: 'Etiqueta', key: 'tag' },
+            { label: 'Descripción', key: 'desc', type: 'textarea' },
+            { label: 'Estado', key: 'status' },
+            { label: 'URL de destino', key: 'href' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Compañía (valores)',
+      fields: [
+        { label: 'Kicker', path: 'values.kicker' },
+        { label: 'Título', path: 'values.title', type: 'textarea' }
+      ],
+      lists: [
+        { label: 'Valores', path: 'values.items',
+          template: { title: '', desc: '' },
+          itemFields: [
+            { label: 'Título', key: 'title' },
+            { label: 'Descripción', key: 'desc', type: 'textarea' }
+          ]
+        },
+        { label: 'Estadísticas', path: 'stats.items',
+          template: { value: '', label: '' },
+          itemFields: [
+            { label: 'Valor', key: 'value' },
+            { label: 'Etiqueta', key: 'label' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Cita',
+      fields: [
+        { label: 'Texto', path: 'quote.text', type: 'textarea' },
+        { label: 'Autor', path: 'quote.author' },
+        { label: 'Cargo', path: 'quote.role' }
+      ]
+    },
+    {
+      title: 'CTA y contacto',
+      fields: [
+        { label: 'Kicker', path: 'cta.kicker' },
+        { label: 'Título', path: 'cta.title', type: 'textarea' },
+        { label: 'Subtítulo', path: 'cta.subtitle', type: 'textarea' },
+        { label: 'Botón principal', path: 'cta.button' },
+        { label: 'Botón secundario', path: 'cta.secondary' },
+        { label: 'Correo', path: 'contact.email' },
+        { label: 'Teléfono', path: 'contact.phone' },
+        { label: 'Dirección', path: 'contact.address' }
+      ]
+    },
+    {
+      title: 'Footer',
+      fields: [
+        { label: 'Descripción', path: 'footer.tagline', type: 'textarea' },
+        { label: 'Legal', path: 'footer.legal' }
+      ],
+      lists: [
+        { label: 'Columnas', path: 'footer.columns',
+          template: { title: '', links: [] },
+          itemFields: [
+            { label: 'Título', key: 'title' },
+            { label: 'Enlaces (uno por línea)', key: 'links', type: 'list' }
+          ]
+        },
+        { label: 'Enlaces legales', path: 'footer.legalLinks', simpleStrings: true }
+      ]
+    }
+  ];
+
+  function renderField(f) {
+    const val = getByPath(content, f.path);
+    const safeVal = val === undefined || val === null ? '' : val;
+
+    if (f.type === 'textarea') {
+      return `<div class="admin-field">
+        <label>${escapeHTML(f.label)}</label>
+        <textarea data-bind="${escapeAttr(f.path)}">${escapeHTML(safeVal)}</textarea>
+      </div>`;
+    }
+    if (f.type === 'image') {
+      return `<div class="admin-field">
+        <label>${escapeHTML(f.label)}</label>
+        <div class="admin-image-field">
+          <img data-thumb="${escapeAttr(f.path)}" src="${escapeAttr(safeVal)}" alt="" />
+          <input type="text" data-bind="${escapeAttr(f.path)}" value="${escapeAttr(safeVal)}" />
+          <button class="admin-btn" data-image-pick="${escapeAttr(f.path)}">Elegir</button>
+        </div>
+      </div>`;
+    }
+    return `<div class="admin-field">
+      <label>${escapeHTML(f.label)}</label>
+      <input type="text" data-bind="${escapeAttr(f.path)}" value="${escapeAttr(safeVal)}" />
+    </div>`;
+  }
+
+  function renderListItemField(f, path, index) {
+    const fullPath = `${path}.${index}.${f.key}`;
+    const val = getByPath(content, fullPath);
+    if (f.type === 'list') {
+      const arr = Array.isArray(val) ? val : [];
+      return `<div class="admin-field">
+        <label>${escapeHTML(f.label)}</label>
+        <textarea data-bind-list="${escapeAttr(fullPath)}">${escapeHTML(arr.join('\n'))}</textarea>
+      </div>`;
+    }
+    if (f.type === 'textarea') {
+      return `<div class="admin-field">
+        <label>${escapeHTML(f.label)}</label>
+        <textarea data-bind="${escapeAttr(fullPath)}">${escapeHTML(val || '')}</textarea>
+      </div>`;
+    }
+    return `<div class="admin-field">
+      <label>${escapeHTML(f.label)}</label>
+      <input type="text" data-bind="${escapeAttr(fullPath)}" value="${escapeAttr(val || '')}" />
+    </div>`;
+  }
+
+  function renderList(l) {
+    const arr = getByPath(content, l.path);
+    if (!Array.isArray(arr)) return '';
+
+    if (l.simpleStrings) {
+      return `<div class="admin-field">
+        <label>${escapeHTML(l.label)} (uno por línea)</label>
+        <textarea data-bind-list="${escapeAttr(l.path)}">${escapeHTML(arr.join('\n'))}</textarea>
+      </div>`;
+    }
+
+    const itemsHTML = arr.map((item, i) => {
+      const inner = l.itemFields.map((f) => renderListItemField(f, l.path, i)).join('');
+      return `<div class="admin-item">
+        <button class="admin-item-remove" data-remove="${escapeAttr(l.path)}" data-index="${i}" title="Eliminar">×</button>
+        ${inner}
+      </div>`;
+    }).join('');
+
+    return `<div class="admin-field" style="margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;">
+      <label style="margin:0;">${escapeHTML(l.label)}</label>
+      <button class="admin-btn" data-add="${escapeAttr(l.path)}">+ Añadir</button>
+    </div>
+    ${itemsHTML}`;
+  }
+
+  function renderSystemSection() {
+    return `<details class="admin-section">
+      <summary>Sistema</summary>
+      <div class="admin-fields">
+        <p style="font-size:12px;color:var(--text-mute);line-height:1.5;margin-bottom:14px;">
+          Los cambios se guardan automáticamente en este navegador. Exporte una copia para preservar el contenido.
+        </p>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn-primary full" id="adminExport">Exportar JSON</button>
+          <button class="admin-btn full" id="adminImport">Importar JSON</button>
+          <button class="admin-btn" id="adminChangePass">Cambiar contraseña</button>
+          <button class="admin-btn admin-btn-danger" id="adminReset">Restablecer</button>
+          <button class="admin-btn full" id="adminLogout">Cerrar sesión</button>
+        </div>
+        <input type="file" id="adminImportInput" accept="application/json" style="display:none" />
+      </div>
+    </details>`;
+  }
+
+  function renderAdminPanel() {
+    const body = document.getElementById('adminBody');
+    if (!body) return;
+    let html = '';
+    ADMIN_SECTIONS.forEach((section) => {
+      html += `<details class="admin-section">
+        <summary>${escapeHTML(section.title)}</summary>
+        <div class="admin-fields">`;
+      (section.fields || []).forEach((f) => { html += renderField(f); });
+      (section.lists || []).forEach((l) => { html += renderList(l); });
+      html += `</div></details>`;
+    });
+    html += renderSystemSection();
+    body.innerHTML = html;
+    bindAdminPanelEvents();
+  }
+
+  function bindAdminPanelEvents() {
+    const body = document.getElementById('adminBody');
+    if (!body) return;
+
+    body.addEventListener('input', (e) => {
+      const el = e.target;
+      if (el.dataset.bind !== undefined) {
+        setByPath(content, el.dataset.bind, el.value);
+        applyToDOM();
+        scheduleSave();
+      } else if (el.dataset.bindList !== undefined) {
+        const arr = el.value.split('\n').map((s) => s.trim()).filter((s) => s.length > 0);
+        setByPath(content, el.dataset.bindList, arr);
+        renderAll();
+        scheduleSave();
+      }
+    }, { once: false });
+
+    body.addEventListener('click', (e) => {
+      const addBtn = e.target.closest('[data-add]');
+      if (addBtn) {
+        e.preventDefault();
+        const path = addBtn.dataset.add;
+        const template = findTemplateForPath(path);
+        const arr = getByPath(content, path);
+        if (Array.isArray(arr)) {
+          arr.push(deepClone(template || {}));
+          saveContent();
+          renderAll();
+          renderAdminPanel();
+          openAdminDrawer();
+        }
+        return;
+      }
+      const remBtn = e.target.closest('[data-remove]');
+      if (remBtn) {
+        e.preventDefault();
+        const path = remBtn.dataset.remove;
+        const idx = parseInt(remBtn.dataset.index, 10);
+        const arr = getByPath(content, path);
+        if (Array.isArray(arr)) {
+          arr.splice(idx, 1);
+          saveContent();
+          renderAll();
+          renderAdminPanel();
+          openAdminDrawer();
+        }
+        return;
+      }
+      const imgPick = e.target.closest('[data-image-pick]');
+      if (imgPick) {
+        e.preventDefault();
+        openImageEditor(imgPick.dataset.imagePick);
+        return;
+      }
+      if (e.target.id === 'adminExport') {
+        exportJSON();
+      } else if (e.target.id === 'adminImport') {
+        document.getElementById('adminImportInput').click();
+      } else if (e.target.id === 'adminChangePass') {
+        changePassword();
+      } else if (e.target.id === 'adminReset') {
+        if (confirm('¿Restablecer todo el contenido a los valores por defecto? Se perderán los cambios actuales.')) {
+          content = deepClone(DEFAULT_CONTENT);
+          saveContent();
+          renderAll();
+          renderAdminPanel();
+          openAdminDrawer();
+        }
+      } else if (e.target.id === 'adminLogout') {
+        logoutAdmin();
+      }
+    });
+
+    const importInput = document.getElementById('adminImportInput');
+    if (importInput) {
+      importInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        importJSON(file);
+        e.target.value = '';
+      });
+    }
+  }
+
+  function findTemplateForPath(path) {
+    for (const s of ADMIN_SECTIONS) {
+      for (const l of (s.lists || [])) {
+        if (l.path === path) return l.template;
+      }
+    }
+    return {};
+  }
+
+  /* ============================================================
+     ADMIN — ACCIONES
+     ============================================================ */
+  function openAdminDrawer() {
+    const drawer = document.getElementById('adminDrawer');
+    if (drawer) drawer.classList.add('open');
+  }
+  function closeAdminDrawer() {
+    const drawer = document.getElementById('adminDrawer');
+    if (drawer) drawer.classList.remove('open');
+  }
+
+  function getPassword() {
+    try { return localStorage.getItem(PASS_KEY) || DEFAULT_PASS; } catch (e) { return DEFAULT_PASS; }
+  }
+  function setPassword(p) {
+    try { localStorage.setItem(PASS_KEY, p); } catch (e) {}
+  }
+
+  function loginAdmin() {
+    adminMode = true;
+    enableEditable();
+    renderAdminPanel();
+    openAdminDrawer();
+  }
+
+  function logoutAdmin() {
+    adminMode = false;
+    enableEditable();
+    closeAdminDrawer();
+  }
+
+  function changePassword() {
+    const current = prompt('Contraseña actual:');
+    if (current === null) return;
+    if (current !== getPassword()) {
+      alert('Contraseña actual incorrecta.');
+      return;
+    }
+    const next = prompt('Nueva contraseña (mínimo 6 caracteres):');
+    if (next === null) return;
+    if (!next || next.length < 6) {
+      alert('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+    setPassword(next);
+    alert('Contraseña actualizada.');
+  }
+
+  function exportJSON() {
+    const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const date = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = 'content.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function importJSON(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        content = deepMerge(deepClone(DEFAULT_CONTENT), data);
+        saveContent();
+        renderAll();
+        renderAdminPanel();
+        openAdminDrawer();
+        enableEditable();
+      } catch (err) {
+        alert('Archivo JSON inválido.');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  /* ============================================================
+     IMAGE EDITOR
+     ============================================================ */
+  function openImageEditor(path) {
+    imageEditPath = path;
+    const current = getByPath(content, path) || '';
+    imageDraft = current;
+    const modal = document.getElementById('imageModal');
+    const preview = document.getElementById('imagePreview');
+    const input = document.getElementById('imageUrl');
+    input.value = current;
+    if (current) {
+      preview.innerHTML = `<img src="${escapeAttr(current)}" alt="" />`;
+    } else {
+      preview.textContent = 'Sin imagen';
+    }
+    modal.classList.add('open');
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function closeImageEditor() {
+    imageEditPath = null;
+    imageDraft = '';
+    document.getElementById('imageModal').classList.remove('open');
+  }
+
+  function applyImage() {
+    if (!imageEditPath) return;
+    const input = document.getElementById('imageUrl');
+    const url = input.value.trim();
+    if (!url) return;
+    setByPath(content, imageEditPath, url);
+    applyToDOM();
+    saveContent();
+    // refrescar thumbnails del panel si está abierto
+    document.querySelectorAll('[data-thumb]').forEach((img) => {
+      const val = getByPath(content, img.dataset.thumb);
+      if (val) img.src = val;
+    });
+    closeImageEditor();
+  }
+
+  /* ============================================================
+     EVENTOS GLOBALES
+     ============================================================ */
+  function bindGlobalEvents() {
+    // Scroll header
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        document.body.classList.toggle('menu-open');
+      });
+    }
+    document.getElementById('mobileNav').addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') document.body.classList.remove('menu-open');
+    });
+
+    // Admin trigger
+    document.getElementById('adminTrigger').addEventListener('click', () => {
+      if (adminMode) { openAdminDrawer(); return; }
+      document.getElementById('loginPass').value = '';
+      document.getElementById('loginError').textContent = '';
+      document.getElementById('loginModal').classList.add('open');
+      setTimeout(() => document.getElementById('loginPass').focus(), 100);
+    });
+
+    // Atajo de teclado
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        document.getElementById('adminTrigger').click();
+      }
+    });
+
+    // Login
+    document.getElementById('loginSubmit').addEventListener('click', () => {
+      const val = document.getElementById('loginPass').value;
+      if (val === getPassword()) {
+        document.getElementById('loginModal').classList.remove('open');
+        loginAdmin();
+      } else {
+        document.getElementById('loginError').textContent = 'Contraseña incorrecta.';
+      }
+    });
+    document.getElementById('loginPass').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('loginSubmit').click();
+    });
+
+    // Admin pill
+    document.getElementById('adminPill').addEventListener('click', openAdminDrawer);
+    document.getElementById('adminClose').addEventListener('click', closeAdminDrawer);
+
+    // Cerrar modales
+    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.closeModal;
+        document.getElementById(id).classList.remove('open');
+        if (id === 'imageModal') closeImageEditor();
+      });
+    });
+    document.querySelectorAll('.modal').forEach((modal) => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('open');
+          if (modal.id === 'imageModal') closeImageEditor();
+        }
+      });
+    });
+
+    // Image modal
+    document.getElementById('imagePick').addEventListener('click', () => {
+      document.getElementById('imageFile').click();
+    });
+    document.getElementById('imageFile').addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        alert('La imagen supera los 2MB. Use una URL externa para imágenes más grandes.');
+        e.target.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        imageDraft = ev.target.result;
+        document.getElementById('imageUrl').value = imageDraft;
+        document.getElementById('imagePreview').innerHTML = `<img src="${imageDraft}" alt="" />`;
+      };
+      reader.readAsDataURL(file);
+    });
+    document.getElementById('imageUrl').addEventListener('input', (e) => {
+      const v = e.target.value.trim();
+      imageDraft = v;
+      const preview = document.getElementById('imagePreview');
+      if (v) preview.innerHTML = `<img src="${escapeAttr(v)}" alt="" />`;
+      else preview.textContent = 'Sin imagen';
+    });
+    document.getElementById('imageSubmit').addEventListener('click', applyImage);
+
+    // Inline editing
+    document.addEventListener('input', (e) => {
+      const el = e.target.closest('[data-edit]');
+      if (!el || !adminMode) return;
+      if (!el.isContentEditable) return;
+      setByPath(content, el.dataset.edit, el.textContent);
+      scheduleSave();
+    });
+
+    // Blur → normalizar texto
+    document.addEventListener('blur', (e) => {
+      const el = e.target.closest('[data-edit]');
+      if (!el || !adminMode || !el.isContentEditable) return;
+      const cleaned = el.textContent.replace(/\s+/g, ' ').trim();
+      if (cleaned !== el.textContent) el.textContent = cleaned;
+      setByPath(content, el.dataset.edit, cleaned);
+      scheduleSave();
+    }, true);
+
+    // Paste plano
+    document.addEventListener('paste', (e) => {
+      const el = e.target.closest('[data-edit]');
+      if (!el || !adminMode || !el.isContentEditable) return;
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+
+    // Click en imágenes editables
+    document.addEventListener('click', (e) => {
+      const wrap = e.target.closest('[data-edit-img]');
+      if (wrap && adminMode) {
+        e.preventDefault();
+        e.stopPropagation();
+        openImageEditor(wrap.dataset.editImg);
+      }
+    });
+
+    // Evitar navegación al editar enlaces del footer (solo en admin)
+    document.addEventListener('click', (e) => {
+      if (!adminMode) return;
+      const link = e.target.closest('a');
+      if (!link) return;
+      // Si el enlace es editable (tiene data-edit), permitir navegación normal
+      if (link.hasAttribute('data-edit')) return;
+    });
+  }
+
+  /* ============================================================
+     INIT
+     ============================================================ */
+  async function init() {
+    await loadPublished();
+    content = loadContent();
+    renderAll();
+    bindGlobalEvents();
+    if (adminMode) {
+      renderAdminPanel();
+      openAdminDrawer();
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
