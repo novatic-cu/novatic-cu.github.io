@@ -1,0 +1,35 @@
+---
+import { getContent } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+const { products } = await getContent();
+const single = products.items.length === 1;
+---
+
+<section class="section" id="productos">
+  <div class="container">
+    <SectionHead kicker={products.kicker} title={products.title} subtitle={products.subtitle} />
+    <div class:list={['products-grid', { single }]}>
+      {products.items.map((p) => {
+        const Tag = p.href ? 'a' : 'article';
+        return (
+          <Tag class="product-card reveal" href={p.href}>
+            <div class="product-tag">{p.tag}</div>
+            <h3 class="product-name">{p.name}</h3>
+            <p class="product-desc">{p.desc}</p>
+            <span class="product-status">{p.status}</span>
+            {p.href && p.cta && <div class="product-cta">{p.cta}</div>}
+          </Tag>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tarjeta-enlace y variante de un solo producto (de la versión publicada) */
+  a.product-card { text-decoration: none; color: inherit; }
+  .products-grid.single { grid-template-columns: 1fr; max-width: 720px; }
+  .products-grid.single :global(.product-card) { padding: 40px; }
+  .product-cta { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 12px; }
+  a.product-card:hover .product-cta { text-decoration: underline; text-underline-offset: 3px; }
+</style>

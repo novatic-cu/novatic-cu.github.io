@@ -1,0 +1,40 @@
+{
+  "kicker": "Por qué NOVATIC",
+  "title": "Principios que sostienen la operación.",
+  "items": [
+    {
+      "title": "Infraestructura soberana",
+      "desc": "Datos personales alojados exclusivamente en Cuba, en cumplimiento de la Ley 149/2022."
+    },
+    {
+      "title": "Criptografía auditable",
+      "desc": "Cadena de confianza de dos niveles con root offline, intermedias rotables y auditoría inmutable."
+    },
+    {
+      "title": "Arquitectura headless",
+      "desc": "Cada servicio expone APIs limpias. La interfaz es una consecuencia, no una restricción."
+    },
+    {
+      "title": "Intermediación responsable",
+      "desc": "Riders como socios independientes verificados. Marco legal alineado con los decretos 160/2026 y 167/2026."
+    }
+  ],
+  "stats": [
+    {
+      "value": "10–20%",
+      "label": "Comisión marketplace"
+    },
+    {
+      "value": "15–25%",
+      "label": "Comisión logística"
+    },
+    {
+      "value": "2 VPS",
+      "label": "Infraestructura CU + ES"
+    },
+    {
+      "value": "10 años",
+      "label": "Vida útil de root CA"
+    }
+  ]
+}

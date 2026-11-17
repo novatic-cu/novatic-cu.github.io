@@ -1,0 +1,38 @@
+---
+import { getContent, asset } from '../lib/content';
+const { hero } = await getContent();
+---
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="kicker">
+        <span class="kicker-line"></span>
+        <span>{hero.kicker}</span>
+      </div>
+      <h1 class="hero-title">{hero.title}</h1>
+      <p class="hero-subtitle">{hero.subtitle}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href={hero.ctaPrimaryHref}>{hero.ctaPrimary}</a>
+        <a class="btn btn-ghost" href={hero.ctaSecondaryHref}>{hero.ctaSecondary}</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="img-wrap hero-img">
+        <img src={asset(hero.image)} alt={hero.imageAlt} />
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-label">{hero.badge.label}</div>
+        <div class="hero-badge-value">{hero.badge.value}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container hero-stats">
+    {hero.stats.map((s) => (
+      <div class="hero-stat">
+        <div class="hero-stat-value">{s.value}</div>
+        <div class="hero-stat-label">{s.label}</div>
+      </div>
+    ))}
+  </div>
+</section>

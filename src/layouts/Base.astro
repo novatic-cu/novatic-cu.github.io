@@ -1,0 +1,61 @@
+---
+import '../styles/fonts.css';
+import '../styles/global.css';
+
+interface Props {
+  lang: string;
+  title: string;
+  description: string;
+}
+const { lang, title, description } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const header = document.getElementById('siteHeader');
+      const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 40);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      document.getElementById('menuToggle')?.addEventListener('click', () => {
+        document.body.classList.toggle('menu-open');
+      });
+      document.getElementById('mobileNav')?.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).tagName === 'A') document.body.classList.remove('menu-open');
+      });
+
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('in-view'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in-view');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -60px 0px' },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

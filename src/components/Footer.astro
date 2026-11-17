@@ -1,0 +1,32 @@
+---
+import { getContent } from '../lib/content';
+const { brand, footer } = await getContent();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-name">{brand.name}</span>
+          <span class="brand-suffix">{brand.suffix}</span>
+        </div>
+        <p class="footer-tagline">{footer.tagline}</p>
+      </div>
+      {footer.columns.map((c) => (
+        <div class="footer-col">
+          <h5>{c.title}</h5>
+          <ul>
+            {c.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="footer-bottom">
+      <span>{footer.legal}</span>
+      <div class="footer-legal-links">
+        {footer.legalLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+  </div>
+</footer>

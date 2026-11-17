@@ -1,0 +1,25 @@
+{
+  "kicker": "Productos SaaS",
+  "title": "Software que opera donde su negocio lo necesita.",
+  "subtitle": "Productos offline-first con licenciamiento criptográfico. Sin dependencia de conexión, con validación local y activación online cuando se requiera.",
+  "items": [
+    {
+      "name": "NOVABiz",
+      "tag": "ERP · Offline",
+      "desc": "Inventario, punto de venta, facturación y CRM básico. Licencia por módulos.",
+      "status": "En desarrollo"
+    },
+    {
+      "name": "NOVACaja",
+      "tag": "POS · Offline",
+      "desc": "Caja registradora por local. Cobros, turnos y reportes con licencia local.",
+      "status": "Spec 2026"
+    },
+    {
+      "name": "NOVAGym",
+      "tag": "Gimnasios · LAN",
+      "desc": "Membresías, cobros, rutinas y estadísticas en red local.",
+      "status": "Planificado"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "kicker": "La plataforma",
+  "title": "Tres mundos. Una sola infraestructura.",
+  "subtitle": "Cada componente opera de forma autónoma y se integra con los demás mediante APIs headless. El resultado: un ecosistema coherente donde el comercio, la logística y el software se alimentan entre sí.",
+  "items": [
+    {
+      "tag": "01 · Marketplace",
+      "name": "NOVAStore",
+      "desc": "Plataforma de venta multi-vendedor para PYMES mayoristas y minoristas. Catálogo versionado, checkout integrado y comisión transparente del 10 al 20% por categoría.",
+      "features": [
+        "Catálogo multi-vendedor",
+        "Checkout headless",
+        "Comisión por categoría"
+      ]
+    },
+    {
+      "tag": "02 · Logística",
+      "name": "NOVASend",
+      "desc": "Red de riders independientes con triciclos eléctricos. Asignación algorítmica por zona, disponibilidad y rating. Tracking en tiempo real y liquidación automática.",
+      "features": [
+        "Asignación algorítmica",
+        "Tracking en vivo",
+        "Riders verificados"
+      ]
+    },
+    {
+      "tag": "03 · Software",
+      "name": "NOVABiz",
+      "desc": "Suite de software empresarial para operar sin fricción: ERP, punto de venta y gestión de membresías. Licenciamiento offline con firma digital y activación online.",
+      "features": [
+        "ERP para PYMES",
+        "Punto de venta",
+        "Licencia offline"
+      ]
+    }
+  ]
+}

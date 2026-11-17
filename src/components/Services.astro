@@ -1,0 +1,21 @@
+---
+import { getContent } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+const { services } = await getContent();
+---
+
+<section class="section section-alt" id="servicios">
+  <div class="container">
+    <SectionHead kicker={services.kicker} title={services.title} subtitle={services.subtitle} />
+    <div class="services-grid">
+      {services.categories.map((c) => (
+        <div class="service-category reveal">
+          <h3 class="service-category-name">{c.name}</h3>
+          <ul class="service-list">
+            {c.items.map((it) => <li>{it}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

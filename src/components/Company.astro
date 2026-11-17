@@ -1,0 +1,28 @@
+---
+import { getContent } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+const { values } = await getContent();
+---
+
+<section class="section section-dark" id="compania">
+  <div class="container">
+    <SectionHead kicker={values.kicker} title={values.title} />
+    <div class="values-grid">
+      {values.items.map((v, i) => (
+        <div class="value-item reveal">
+          <div class="value-number">{String(i + 1).padStart(2, '0')}</div>
+          <h3 class="value-title">{v.title}</h3>
+          <p class="value-desc">{v.desc}</p>
+        </div>
+      ))}
+    </div>
+    <div class="stats-row">
+      {values.stats.map((s) => (
+        <div class="stat-item reveal">
+          <div class="stat-value">{s.value}</div>
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "Plataforma",
+      "href": "#plataforma"
+    },
+    {
+      "label": "Servicios",
+      "href": "#servicios"
+    },
+    {
+      "label": "Productos",
+      "href": "#productos"
+    },
+    {
+      "label": "Compañía",
+      "href": "#compania"
+    },
+    {
+      "label": "Contacto",
+      "href": "#contacto"
+    }
+  ]
+}

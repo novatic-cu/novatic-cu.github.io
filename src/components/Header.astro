@@ -1,0 +1,25 @@
+---
+import { getContent } from '../lib/content';
+const { brand, nav } = await getContent();
+---
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">{brand.name}</span>
+      <span class="brand-suffix">{brand.suffix}</span>
+    </a>
+    <nav class="nav" id="mainNav">
+      {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}
+    </nav>
+    <a class="btn btn-sm btn-primary" href={brand.navCtaHref}>{brand.navCta}</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}
+  <a class="btn btn-primary" href={brand.navCtaHref}>{brand.navCta}</a>
+</div>
