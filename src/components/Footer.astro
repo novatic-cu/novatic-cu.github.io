@@ -1,5 +1,6 @@
 ---
 import { getContent } from '../lib/content';
+import BrandLogo from './BrandLogo.astro';
 const { brand, footer } = await getContent();
 ---
 
@@ -7,8 +8,8 @@ const { brand, footer } = await getContent();
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand">
-          <span class="brand-name">{brand.name}</span>
+        <div class="brand" aria-label={`${brand.name} ${brand.suffix}`}>
+          <BrandLogo variant="dark" />
           <span class="brand-suffix">{brand.suffix}</span>
         </div>
         <p class="footer-tagline">{footer.tagline}</p>

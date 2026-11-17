@@ -1,13 +1,13 @@
 ---
 import { getContent } from '../lib/content';
+import BrandLogo from './BrandLogo.astro';
 const { brand, nav } = await getContent();
 ---
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a class="brand" href="#top">
-      <span class="brand-name">{brand.name}</span>
-      <span class="brand-suffix">{brand.suffix}</span>
+    <a class="brand" href="#top" aria-label={brand.name}>
+      <BrandLogo />
     </a>
     <nav class="nav" id="mainNav">
       {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}

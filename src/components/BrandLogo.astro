@@ -1,0 +1,21 @@
+---
+import symbolLight from '../assets/brand/novatic-simbolo-blanco.svg';
+import symbolColor from '../assets/brand/novatic-simbolo-color.svg';
+import wordLight from '../assets/brand/novatic-wordmark-blanco.svg';
+import wordColor from '../assets/brand/novatic-wordmark-color.svg';
+
+interface Props {
+  /** `auto`: blanco sobre fondo oscuro y color cuando la cabecera pasa a fondo claro. `dark`: siempre blanco. */
+  variant?: 'auto' | 'dark';
+}
+const { variant = 'auto' } = Astro.props;
+---
+
+<span class="brand-mark">
+  <img class="logo-on-dark" src={symbolLight.src} alt="" width={symbolLight.width} height={symbolLight.height} />
+  {variant === 'auto' && <img class="logo-on-light" src={symbolColor.src} alt="" width={symbolColor.width} height={symbolColor.height} />}
+</span>
+<span class="brand-word">
+  <img class="logo-on-dark" src={wordLight.src} alt="" width={wordLight.width} height={wordLight.height} />
+  {variant === 'auto' && <img class="logo-on-light" src={wordColor.src} alt="" width={wordColor.width} height={wordColor.height} />}
+</span>
