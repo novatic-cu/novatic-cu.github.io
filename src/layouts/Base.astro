@@ -32,11 +32,21 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      document.getElementById('menuToggle')?.addEventListener('click', () => {
-        document.body.classList.toggle('menu-open');
-      });
+      const toggle = document.getElementById('menuToggle');
+      const setMenu = (open: boolean) => {
+        document.body.classList.toggle('menu-open', open);
+        toggle?.setAttribute('aria-expanded', String(open));
+        toggle?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      };
+      toggle?.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
       document.getElementById('mobileNav')?.addEventListener('click', (e) => {
-        if ((e.target as HTMLElement).tagName === 'A') document.body.classList.remove('menu-open');
+        if ((e.target as HTMLElement).closest('a')) setMenu(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setMenu(false);
+      });
+      window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => {
+        if (e.matches) setMenu(false);
       });
 
       const els = document.querySelectorAll('.reveal');

@@ -27,7 +27,5 @@ pnpm preview   # sirve dist/
 
 ## Despliegue
 
-- **GitHub Pages:** `.github/workflows/deploy.yml` (push a `main`). Ajusta `SITE_URL`/`BASE_PATH` si no es `novatic-cu.github.io` en la raíz.
+- **GitHub Pages (actual):** repo `novatic-cu/novatic-cu.github.io`, Pages en modo *GitHub Actions*. Cada push a `main` ejecuta `.github/workflows/deploy.yml` y publica en https://novatic-cu.github.io/. Al llegar el dominio propio: `SITE_URL=https://dominio` y, si aplica, `public/CNAME`.
 - **VPS:** `SITE_URL=https://dominio pnpm build` y servir `dist/` con nginx/Caddy.
-
-`reference/website.html` es el HTML original de diseño (solo referencia).

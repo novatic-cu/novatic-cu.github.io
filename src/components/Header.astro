@@ -13,7 +13,7 @@ const { brand, nav } = await getContent();
       {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}
     </nav>
     <a class="btn btn-sm btn-primary" href={brand.navCtaHref}>{brand.navCta}</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span>
     </button>
   </div>
