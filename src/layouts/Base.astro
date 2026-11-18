@@ -44,11 +44,13 @@ const jsonLd = {
     <meta property="og:image" content={abs('/og-image.png')} />
     <meta name="twitter:card" content="summary_large_image" />
     {canonical && <link rel="canonical" href={canonical} />}
+    {/* Favicon que sigue el tema del navegador: marino y oro en claro, blanco y oro en oscuro.
+        SVG adaptable (Chrome, Edge, Firefox) + ICO claro/oscuro de respaldo. */}
+    <link rel="icon" href={asset('/favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={asset('/favicon-dark.ico')} sizes="32x32" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href={asset('/favicon.svg')} type="image/svg+xml" />
-    <link rel="icon" href={asset('/favicon.ico')} sizes="48x48" />
-    <link rel="icon" href={asset('/favicon-32.png')} type="image/png" sizes="32x32" />
-    <link rel="icon" href={asset('/icon-192.png')} type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')} />
+    <link rel="manifest" href={asset('/manifest.webmanifest')} />
     <meta name="theme-color" content="#0A1420" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
