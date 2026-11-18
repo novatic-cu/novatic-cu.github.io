@@ -3,8 +3,12 @@
   "title": "Cómo cuidamos su operación.",
   "items": [
     {
-      "title": "Sus datos se quedan en Cuba",
-      "desc": "Alojamos los datos personales en el país, en cumplimiento de la Ley 149/2022."
+      "title": "La seguridad va primero",
+      "desc": "Diseñamos cada sistema pensando antes en protegerlo: claves protegidas, licencias firmadas y registros de auditoría. Sin atajos ni puertas traseras."
+    },
+    {
+      "title": "Datos donde corresponde",
+      "desc": "Los datos personales de clientes en Cuba se alojan en el país, como exige la Ley 149/2022."
     },
     {
       "title": "Especificación antes que código",
@@ -13,10 +17,6 @@
     {
       "title": "Funciona sin conexión",
       "desc": "Diseñamos para conectividad inestable: el software crítico sigue operando sin internet y sincroniza después."
-    },
-    {
-      "title": "Seguridad auditable",
-      "desc": "Claves protegidas, licencias firmadas y registros de auditoría. Sin atajos ni puertas traseras."
     }
   ]
 }

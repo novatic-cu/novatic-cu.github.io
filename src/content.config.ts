@@ -21,6 +21,9 @@ const stat = z.object({ value: z.string(), label: z.string() });
 const sectionHead = { kicker: z.string(), title: z.string() };
 
 /** Estados que puede mostrar el sitio. `desarrollo` y `planificado` existen solo para guardar datos ocultos. */
+/** Alcance geográfico. Por defecto todo es para todo el mundo; un producto declara `cuba` si es solo para Cuba. */
+const availability = z.enum(['global', 'cuba']).default('global');
+
 export const PRODUCT_STATUS = ['disponible', 'alpha', 'proximamente', 'desarrollo', 'planificado'] as const;
 
 export const collections = {
@@ -73,6 +76,7 @@ export const collections = {
       note: z.string().optional(),
     }),
   ),
+  quote: single('quote', z.object({ text: z.string(), author: z.string(), role: z.string() })),
   company: single(
     'company',
     z.object({ title: z.string(), lead: z.string(), paragraphs: z.array(z.string()) }),
@@ -113,6 +117,7 @@ export const collections = {
       order: z.number(),
       featured: z.boolean().default(false),
       public: z.boolean().default(true),
+      availability,
       brandName: z.string(),
       name: z.string(),
       summary: z.string(),
@@ -131,6 +136,7 @@ export const collections = {
         order: z.number(),
         featured: z.boolean().default(false),
         public: z.boolean().default(true),
+        availability,
         status: z.enum(PRODUCT_STATUS),
         name: z.string(),
         tagline: z.string(),

@@ -15,5 +15,6 @@
   ],
   "note": "Versión 2.0.0-alpha.2: puede tener fallos.",
   "href": "https://novatic-cu.github.io/NovaFlix/",
-  "hrefLabel": "Abrir NovaFlix"
+  "hrefLabel": "Abrir NovaFlix",
+  "availability": "cuba"
 }

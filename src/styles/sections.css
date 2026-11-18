@@ -44,6 +44,15 @@
 .status--on-dark.status--alpha,
 .status--on-dark.status--proximamente { color: var(--gold-soft); }
 
+.avail {
+  margin-left: 12px;
+  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+  color: var(--text-soft);
+}
+.avail--on-dark { color: rgba(255, 255, 255, 0.7); }
+.quote-section { padding: 110px 0; }
+.quote-role { color: var(--text-soft); }
+
 /* ---------- Ofertas de servicio ---------- */
 .offers {
   display: grid; grid-template-columns: repeat(3, 1fr);

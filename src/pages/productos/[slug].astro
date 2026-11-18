@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import StatusBadge from '../../components/StatusBadge.astro';
-import { asset, getContent, getProducts, link, mailto } from '../../lib/content';
+import { AVAILABILITY_LABEL, asset, getContent, getProducts, link, mailto } from '../../lib/content';
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -58,6 +58,10 @@ const action = p.ctaLabel && p.ctaSubject
           <h3>Estado</h3>
           <p><StatusBadge status={p.status} /></p>
           {p.note && <p class="aside-note">{p.note}</p>}
+        </div>
+        <div class="aside-item">
+          <h3>Disponibilidad</h3>
+          <p>{AVAILABILITY_LABEL[p.availability]}</p>
         </div>
         {p.pricingNote && (
           <div class="aside-item">

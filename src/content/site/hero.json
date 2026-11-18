@@ -1,6 +1,6 @@
 {
   "kicker": "Ciego de Ávila · Cuba",
-  "title": "Servicios tecnológicos y software para empresas cubanas.",
+  "title": "Servicios tecnológicos y software para empresas.",
   "subtitle": "Desarrollo a medida, infraestructura, redes, marca y soporte. Un solo proveedor, con propuesta por escrito y entrega por hitos.",
   "ctaPrimary": "Solicitar propuesta",
   "ctaPrimaryHref": "#contacto",
@@ -18,8 +18,8 @@
       "label": "Líneas de servicio"
     },
     {
-      "value": "CU",
-      "label": "Datos alojados en Cuba"
+      "value": "Global",
+      "label": "Clientes en cualquier país"
     },
     {
       "value": "B2B",

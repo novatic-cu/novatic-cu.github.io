@@ -6,5 +6,6 @@
   "name": "NOVABiz",
   "tagline": "ERP para empresas cubanas, sin conexión.",
   "summary": "ERP para empresas cubanas, sin conexión.",
-  "features": []
+  "features": [],
+  "availability": "cuba"
 }

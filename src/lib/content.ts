@@ -2,7 +2,7 @@ import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 
 type SingleName =
   | 'meta' | 'brand' | 'nav' | 'hero' | 'sections' | 'values' | 'process'
-  | 'company' | 'cta' | 'contact' | 'footer';
+  | 'company' | 'quote' | 'cta' | 'contact' | 'footer';
 
 async function one<K extends SingleName>(name: K): Promise<CollectionEntry<K>['data']> {
   const entry = await getEntry(name, name);
@@ -12,12 +12,12 @@ async function one<K extends SingleName>(name: K): Promise<CollectionEntry<K>['d
 
 /** Carga las secciones únicas del sitio (un JSON por sección). */
 export async function getContent() {
-  const [meta, brand, nav, hero, sections, values, process, company, cta, contact, footer] =
+  const [meta, brand, nav, hero, sections, values, process, company, quote, cta, contact, footer] =
     await Promise.all([
       one('meta'), one('brand'), one('nav'), one('hero'), one('sections'), one('values'),
-      one('process'), one('company'), one('cta'), one('contact'), one('footer'),
+      one('process'), one('company'), one('quote'), one('cta'), one('contact'), one('footer'),
     ]);
-  return { meta, brand, nav, hero, sections, values, process, company, cta, contact, footer };
+  return { meta, brand, nav, hero, sections, values, process, company, quote, cta, contact, footer };
 }
 
 /** Servicios públicos, en el orden definido en cada JSON. El `slug` es el nombre del archivo. */
@@ -52,6 +52,11 @@ export function link(href: string): string {
 export function mailto(email: string, subject: string): string {
   return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 }
+
+export const AVAILABILITY_LABEL: Record<string, string> = {
+  global: 'Todo el mundo',
+  cuba: 'Solo para Cuba',
+};
 
 export const STATUS_LABEL: Record<string, string> = {
   disponible: 'Disponible',

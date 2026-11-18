@@ -47,6 +47,10 @@ const { contact } = await getContent();
           <p>{s.audience}</p>
         </div>
         <div class="aside-item">
+          <h3>Disponibilidad</h3>
+          <p>{s.availability === 'cuba' ? 'Solo para clientes en Cuba' : 'Clientes en cualquier país'}</p>
+        </div>
+        <div class="aside-item">
           <h3>Cómo se cobra</h3>
           <p>{s.billing}</p>
           <p class="aside-note">El precio se acuerda por contrato.</p>

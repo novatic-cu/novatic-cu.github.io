@@ -1,0 +1,15 @@
+---
+import { getContent } from '../lib/content';
+const { quote } = await getContent();
+---
+
+<section class="section quote-section">
+  <div class="container quote-container reveal">
+    <div class="quote-mark" aria-hidden="true">“</div>
+    <blockquote class="quote-text">{quote.text}</blockquote>
+    <div class="quote-author">
+      <span>{quote.author}</span>
+      <span class="quote-role">{quote.role}</span>
+    </div>
+  </div>
+</section>

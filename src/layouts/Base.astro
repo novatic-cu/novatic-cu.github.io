@@ -24,6 +24,7 @@ const jsonLd = {
   url: Astro.site?.href,
   logo: abs('/icon-512.png'),
   email: contact.email,
+  areaServed: 'Worldwide',
   address: { '@type': 'PostalAddress', addressLocality: 'Ciego de Ávila', addressCountry: 'CU' },
 };
 ---
@@ -39,7 +40,7 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_CU" />
+    <meta property="og:locale" content="es_LA" />
     <meta property="og:image" content={abs('/og-image.png')} />
     <meta name="twitter:card" content="summary_large_image" />
     {canonical && <link rel="canonical" href={canonical} />}

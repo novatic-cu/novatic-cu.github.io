@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { asset, getContent, link, mailto } from '../lib/content';
+import { AVAILABILITY_LABEL, asset, getContent, link, mailto } from '../lib/content';
 import StatusBadge from './StatusBadge.astro';
 
 interface Props {
@@ -20,6 +20,7 @@ const action = p.ctaLabel && p.ctaSubject
 <article class:list={['product reveal', { 'product--featured': p.featured }]}>
   <div class="product-head">
     <StatusBadge status={p.status} dark={p.featured} />
+    {p.availability === 'cuba' && <span class:list={['avail', { 'avail--on-dark': p.featured }]}>{AVAILABILITY_LABEL.cuba}</span>}
   </div>
   <h3 class="product-title"><a href={detail}>{p.name}</a></h3>
   <p class="product-tagline">{p.tagline}</p>
