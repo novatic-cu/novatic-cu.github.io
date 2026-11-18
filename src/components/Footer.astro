@@ -1,7 +1,15 @@
 ---
-import { getContent } from '../lib/content';
+import { asset, getContent, getProducts, getServices, link } from '../lib/content';
 import BrandLogo from './BrandLogo.astro';
 const { brand, footer } = await getContent();
+const services = await getServices();
+const products = await getProducts();
+// Servicios y productos salen de sus colecciones: el pie nunca lista algo oculto.
+const columns = [
+  { title: 'Servicios', links: services.map((s) => ({ label: s.data.name, href: asset(`/servicios/${s.id}/`) })) },
+  { title: 'Productos', links: products.map((p) => ({ label: p.data.name, href: asset(`/productos/${p.id}/`) })) },
+  ...footer.columns.map((c) => ({ title: c.title, links: c.links.map((l) => ({ label: l.label, href: link(l.href) })) })),
+];
 ---
 
 <footer class="site-footer">
@@ -14,7 +22,7 @@ const { brand, footer } = await getContent();
         </div>
         <p class="footer-tagline">{footer.tagline}</p>
       </div>
-      {footer.columns.map((c) => (
+      {columns.map((c) => (
         <div class="footer-col">
           <h5>{c.title}</h5>
           <ul>
@@ -26,7 +34,7 @@ const { brand, footer } = await getContent();
     <div class="footer-bottom">
       <span>{footer.legal}</span>
       <div class="footer-legal-links">
-        {footer.legalLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+        {footer.legalLinks.map((l) => <a href={link(l.href)}>{l.label}</a>)}
       </div>
     </div>
   </div>

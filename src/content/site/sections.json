@@ -1,0 +1,13 @@
+{
+  "services": {
+    "kicker": "Servicios",
+    "title": "Tecnología para su empresa, de principio a fin.",
+    "subtitle": "Ocho líneas de servicio, un solo proveedor. Cada propuesta llega por escrito, con alcance, plazos y modalidad de cobro.",
+    "note": "Los precios se acuerdan por contrato. Las capacitaciones y los despliegues se cobran aparte."
+  },
+  "products": {
+    "kicker": "Productos",
+    "title": "Software y herramientas de NOVATIC.",
+    "subtitle": "Lo que construimos para usar y para compartir. Cada producto muestra su estado real."
+  }
+}

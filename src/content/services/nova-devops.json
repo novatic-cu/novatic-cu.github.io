@@ -1,0 +1,23 @@
+{
+  "order": 2,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVADevOps",
+  "name": "Infraestructura y despliegue",
+  "summary": "Servidores, despliegues y copias de seguridad que funcionan sin sobresaltos.",
+  "lead": "Ponemos su software en servidores bien configurados y automatizamos su despliegue. Usted deja de depender de una sola persona para publicar cambios y recupera su sistema si algo falla.",
+  "includes": [
+    "Servidores y contenedores configurados",
+    "Despliegue automatizado de su software",
+    "Monitorización y alertas",
+    "Copias de seguridad con prueba de restauración",
+    "Documentación de la operación"
+  ],
+  "outcomes": [
+    "Menos caídas y recuperación más rápida",
+    "Despliegues repetibles, que no dependen de una persona",
+    "Respaldo comprobado, no supuesto"
+  ],
+  "audience": "Equipos con software propio que no tienen quién lo opere.",
+  "billing": "Instalación inicial por proyecto y mantenimiento mensual."
+}

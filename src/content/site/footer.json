@@ -2,86 +2,19 @@
   "tagline": "Negocios, Optimización y Ventajas en Aplicaciones y Tecnologías de la Información y la Comunicación.",
   "columns": [
     {
-      "title": "Plataforma",
-      "links": [
-        {
-          "label": "NOVAStore",
-          "href": "#"
-        },
-        {
-          "label": "NOVASend",
-          "href": "#"
-        },
-        {
-          "label": "NOVAPay",
-          "href": "#"
-        },
-        {
-          "label": "NOVAID",
-          "href": "#"
-        }
-      ]
-    },
-    {
-      "title": "Software",
-      "links": [
-        {
-          "label": "NOVABiz",
-          "href": "#"
-        },
-        {
-          "label": "NOVACaja",
-          "href": "#"
-        },
-        {
-          "label": "NOVAGym",
-          "href": "#"
-        },
-        {
-          "label": "NOVALicense",
-          "href": "#"
-        }
-      ]
-    },
-    {
-      "title": "Servicios",
-      "links": [
-        {
-          "label": "NOVACloud",
-          "href": "#"
-        },
-        {
-          "label": "NOVAMark",
-          "href": "#"
-        },
-        {
-          "label": "NOVAFix",
-          "href": "#"
-        },
-        {
-          "label": "NOVADevOps",
-          "href": "#"
-        }
-      ]
-    },
-    {
       "title": "Compañía",
       "links": [
         {
           "label": "Sobre NOVATIC",
-          "href": "#"
+          "href": "/compania/"
+        },
+        {
+          "label": "Cómo trabajamos",
+          "href": "/compania/#como-trabajamos"
         },
         {
           "label": "Contacto",
-          "href": "#"
-        },
-        {
-          "label": "Legal",
-          "href": "#"
-        },
-        {
-          "label": "Privacidad",
-          "href": "#"
+          "href": "#contacto"
         }
       ]
     }
@@ -90,15 +23,15 @@
   "legalLinks": [
     {
       "label": "Términos",
-      "href": "#"
+      "href": "/legal/terminos/"
     },
     {
       "label": "Privacidad",
-      "href": "#"
+      "href": "/legal/privacidad/"
     },
     {
       "label": "Cookies",
-      "href": "#"
+      "href": "/legal/cookies/"
     }
   ]
 }

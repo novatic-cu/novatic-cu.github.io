@@ -1,0 +1,23 @@
+{
+  "order": 5,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVAMark, NOVABrand y NOVASocial",
+  "name": "Marca y marketing digital",
+  "summary": "Una imagen clara y una presencia constante en redes.",
+  "lead": "Construimos la identidad de su empresa y la ponemos a trabajar: un sitio web, contenido y gestión de sus redes sociales, con informes para que vea qué resulta.",
+  "includes": [
+    "Identidad de marca: logotipo, colores y tipografía",
+    "Sitio web para su empresa",
+    "Calendario y contenido para redes sociales",
+    "Gestión y seguimiento de redes",
+    "Informe mensual de resultados"
+  ],
+  "outcomes": [
+    "Una marca reconocible y coherente",
+    "Presencia constante sin que usted tenga que gestionarla",
+    "Resultados medidos cada mes"
+  ],
+  "audience": "Empresas que quieren verse mejor y vender más.",
+  "billing": "Identidad y sitio web: por proyecto. Gestión de redes: cuota mensual."
+}

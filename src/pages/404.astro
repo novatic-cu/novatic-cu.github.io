@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { asset } from '../lib/content';
+---
+
+<PageLayout title="Página no encontrada — NOVATIC" description="La página que busca no existe." noindex contact={false}>
+  <PageHero title="No encontramos esa página." lead="Puede que el enlace haya cambiado." />
+  <section class="section">
+    <div class="container">
+      <a class="btn btn-primary" href={asset('/')}>Volver al inicio</a>
+    </div>
+  </section>
+</PageLayout>

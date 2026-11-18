@@ -1,20 +1,16 @@
 {
   "items": [
     {
-      "label": "Plataforma",
-      "href": "#plataforma"
-    },
-    {
       "label": "Servicios",
-      "href": "#servicios"
+      "href": "/servicios/"
     },
     {
       "label": "Productos",
-      "href": "#productos"
+      "href": "/productos/"
     },
     {
       "label": "Compañía",
-      "href": "#compania"
+      "href": "/compania/"
     },
     {
       "label": "Contacto",

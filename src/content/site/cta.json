@@ -1,9 +1,9 @@
 {
-  "kicker": "Acceso",
+  "kicker": "Contacto",
   "title": "Hablemos de su operación.",
-  "subtitle": "Evaluamos cada incorporación de forma individual para preservar los estándares de la plataforma. Solicite una conversación inicial.",
-  "button": "Solicitar acceso",
-  "secondary": "Conocer la plataforma",
-  "buttonHref": "mailto:contacto@novatic.cu",
-  "secondaryHref": "#plataforma"
+  "subtitle": "Cuéntenos qué necesita. Le respondemos con una propuesta por escrito.",
+  "button": "Solicitar propuesta",
+  "buttonSubject": "Solicitud de propuesta",
+  "secondary": "Ver servicios",
+  "secondaryHref": "/servicios/"
 }

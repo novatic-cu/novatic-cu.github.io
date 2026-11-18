@@ -1,5 +1,5 @@
 ---
-import { getContent, telHref } from '../lib/content';
+import { getContent, link, mailto, telHref } from '../lib/content';
 const { cta, contact } = await getContent();
 ---
 
@@ -10,18 +10,26 @@ const { cta, contact } = await getContent();
       <h2>{cta.title}</h2>
       <p>{cta.subtitle}</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href={cta.buttonHref}>{cta.button}</a>
-        <a class="btn btn-ghost" href={cta.secondaryHref}>{cta.secondary}</a>
+        <a class="btn btn-primary" href={mailto(contact.email, cta.buttonSubject)}>{cta.button}</a>
+        <a class="btn btn-ghost" href={link(cta.secondaryHref)}>{cta.secondary}</a>
       </div>
       <div class="contact-info">
         <div class="contact-item">
           <span class="contact-item-label">Correo</span>
           <span class="contact-item-value"><a href={`mailto:${contact.email}`}>{contact.email}</a></span>
         </div>
-        <div class="contact-item">
-          <span class="contact-item-label">Teléfono</span>
-          <span class="contact-item-value"><a href={telHref(contact.phone)}>{contact.phone}</a></span>
-        </div>
+        {contact.phone && (
+          <div class="contact-item">
+            <span class="contact-item-label">Teléfono</span>
+            <span class="contact-item-value"><a href={telHref(contact.phone)}>{contact.phone}</a></span>
+          </div>
+        )}
+        {contact.whatsapp && (
+          <div class="contact-item">
+            <span class="contact-item-label">WhatsApp</span>
+            <span class="contact-item-value"><a href={telHref(contact.whatsapp)}>{contact.whatsapp}</a></span>
+          </div>
+        )}
         <div class="contact-item">
           <span class="contact-item-label">Sede</span>
           <span class="contact-item-value">{contact.address}</span>

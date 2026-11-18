@@ -1,0 +1,22 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Why from '../components/Why.astro';
+import Process from '../components/Process.astro';
+import { getContent } from '../lib/content';
+
+const { company } = await getContent();
+---
+
+<PageLayout title="Compañía — NOVATIC" description={company.lead}>
+  <PageHero kicker="Compañía" title={company.title} lead={company.lead} crumbs={[{ label: 'Compañía' }]} />
+  <section class="section">
+    <div class="container prose-wrap">
+      <div class="prose reveal">
+        {company.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+  <Why />
+  <Process />
+</PageLayout>

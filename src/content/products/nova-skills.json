@@ -1,0 +1,16 @@
+{
+  "order": 2,
+  "featured": false,
+  "public": true,
+  "status": "disponible",
+  "name": "@novatic/skills",
+  "tagline": "56 skills y 7 agentes para OpenCode.",
+  "summary": "Skills y agentes especializados en full-stack, arquitectura, bases de datos, DevOps, inteligencia artificial y marketing, para trabajar con OpenCode.",
+  "features": [
+    "Se instala con un comando: npx @novatic/skills",
+    "Instalación global o por proyecto",
+    "Repositorio público"
+  ],
+  "href": "https://github.com/novatic-cu/nova-skills",
+  "hrefLabel": "Ver en GitHub"
+}

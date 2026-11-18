@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { asset } from '../lib/content';
+
+interface Props {
+  entry: CollectionEntry<'services'>;
+}
+const { entry } = Astro.props;
+const s = entry.data;
+const href = asset(`/servicios/${entry.id}/`);
+---
+
+<article class:list={['offer reveal', { 'offer--featured': s.featured }]}>
+  <div class="offer-tag">{s.featured ? 'Punto de partida' : s.brandName}</div>
+  <h3 class="offer-name"><a href={href}>{s.name}</a></h3>
+  <p class="offer-summary">{s.summary}</p>
+  <ul class="offer-includes">
+    {s.includes.slice(0, s.featured ? 4 : 3).map((i) => <li>{i}</li>)}
+  </ul>
+  <div class="offer-foot">
+    <span class="offer-billing">{s.billing}</span>
+    <a class="offer-more" href={href}>Ver detalle<span aria-hidden="true"> →</span></a>
+  </div>
+</article>

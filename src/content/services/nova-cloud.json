@@ -1,0 +1,23 @@
+{
+  "order": 3,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVACloud",
+  "name": "Hosting, VPS, dominios y correo",
+  "summary": "Su presencia en línea: alojamiento, servidores, dominios y correo corporativo.",
+  "lead": "Le damos lo básico para estar en línea con soporte cercano: dónde alojar su sitio o aplicación, un servidor propio si lo necesita, y un correo con el nombre de su empresa.",
+  "includes": [
+    "Hosting para sitios y aplicaciones",
+    "Servidores virtuales (VPS)",
+    "Registro y gestión de dominios",
+    "Correo corporativo y almacenamiento en la nube",
+    "Acuerdo de nivel de servicio por contrato"
+  ],
+  "outcomes": [
+    "Su empresa en línea con un solo proveedor",
+    "Soporte directo, sin tickets perdidos",
+    "Recursos que crecen cuando su negocio crece"
+  ],
+  "audience": "Negocios que necesitan estar en línea con soporte cercano.",
+  "billing": "Plan mensual o anual, según los recursos contratados."
+}

@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getContent, getProducts } from '../../lib/content';
+
+const { sections } = await getContent();
+const head = sections.products;
+const products = await getProducts();
+const featured = products.filter((p) => p.data.featured);
+const others = products.filter((p) => !p.data.featured);
+---
+
+<PageLayout title={`${head.kicker} — NOVATIC`} description={head.subtitle}>
+  <PageHero kicker={head.kicker} title={head.title} lead={head.subtitle} crumbs={[{ label: head.kicker }]} />
+  <section class="section">
+    <div class="container">
+      {featured.map((p) => <ProductCard entry={p} />)}
+      {others.length > 0 && (
+        <div class="products-row">
+          {others.map((p) => <ProductCard entry={p} />)}
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,11 @@
+# Alternativa a nginx: Caddy obtiene y renueva el certificado HTTPS solo.
+su-dominio.cu, www.su-dominio.cu {          # <-- ajustar al dominio real
+    root * /var/www/novatic/dist
+    encode gzip
+    file_server
+    handle_errors {
+        rewrite * /404.html
+        file_server
+    }
+    header /_astro/* Cache-Control "public, max-age=31536000, immutable"
+}

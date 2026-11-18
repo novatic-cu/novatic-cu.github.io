@@ -4,7 +4,7 @@ import SectionHead from './SectionHead.astro';
 const { values } = await getContent();
 ---
 
-<section class="section section-dark" id="compania">
+<section class="section section-dark" id="por-que">
   <div class="container">
     <SectionHead kicker={values.kicker} title={values.title} />
     <div class="values-grid">
@@ -13,14 +13,6 @@ const { values } = await getContent();
           <div class="value-number">{String(i + 1).padStart(2, '0')}</div>
           <h3 class="value-title">{v.title}</h3>
           <p class="value-desc">{v.desc}</p>
-        </div>
-      ))}
-    </div>
-    <div class="stats-row">
-      {values.stats.map((s) => (
-        <div class="stat-item reveal">
-          <div class="stat-value">{s.value}</div>
-          <div class="stat-label">{s.label}</div>
         </div>
       ))}
     </div>

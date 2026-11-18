@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { asset, getContent, link, mailto } from '../lib/content';
+import StatusBadge from './StatusBadge.astro';
+
+interface Props {
+  entry: CollectionEntry<'products'>;
+}
+const { entry } = Astro.props;
+const p = entry.data;
+const { contact } = await getContent();
+const detail = asset(`/productos/${entry.id}/`);
+const action = p.ctaLabel && p.ctaSubject
+  ? { label: p.ctaLabel, href: mailto(contact.email, p.ctaSubject) }
+  : p.href && p.hrefLabel
+    ? { label: p.hrefLabel, href: link(p.href) }
+    : null;
+---
+
+<article class:list={['product reveal', { 'product--featured': p.featured }]}>
+  <div class="product-head">
+    <StatusBadge status={p.status} dark={p.featured} />
+  </div>
+  <h3 class="product-title"><a href={detail}>{p.name}</a></h3>
+  <p class="product-tagline">{p.tagline}</p>
+  <p class="product-summary">{p.summary}</p>
+  {p.featured && p.features.length > 0 && (
+    <ul class="product-features">
+      {p.features.map((f) => <li>{f}</li>)}
+    </ul>
+  )}
+  {p.featured && p.pricingNote && <p class="product-pricing">{p.pricingNote}</p>}
+  <div class="product-actions">
+    {action && (
+      <a class:list={['btn btn-sm', p.featured ? 'btn-primary' : 'btn-outline']} href={action.href}>{action.label}</a>
+    )}
+    <a class="offer-more" href={detail}>Ver más<span aria-hidden="true"> →</span></a>
+  </div>
+</article>

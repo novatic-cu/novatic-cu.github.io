@@ -1,0 +1,10 @@
+{
+  "order": 12,
+  "featured": false,
+  "public": false,
+  "status": "planificado",
+  "name": "NOVAGym",
+  "tagline": "Gestión de gimnasios en red local.",
+  "summary": "Gestión de gimnasios en red local.",
+  "features": []
+}

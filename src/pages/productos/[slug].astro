@@ -1,0 +1,72 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { asset, getContent, getProducts, link, mailto } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const p = entry.data;
+const { contact } = await getContent();
+const action = p.ctaLabel && p.ctaSubject
+  ? { label: p.ctaLabel, href: mailto(contact.email, p.ctaSubject) }
+  : p.href && p.hrefLabel
+    ? { label: p.hrefLabel, href: link(p.href) }
+    : null;
+---
+
+<PageLayout title={`${p.name} — NOVATIC`} description={p.summary}>
+  <PageHero
+    kicker="Productos"
+    title={p.name}
+    lead={p.tagline}
+    crumbs={[{ label: 'Productos', href: asset('/productos/') }, { label: p.name }]}
+  />
+  <section class="section">
+    <div class="container detail">
+      <div class="detail-main">
+        <p class="detail-lead reveal">{p.summary}</p>
+        {p.features.length > 0 && (
+          <div class="detail-block reveal">
+            <h2>{p.status === 'proximamente' ? 'Lo que incluirá' : 'Qué ofrece'}</h2>
+            <ul class="check-list">
+              {p.features.map((f) => <li>{f}</li>)}
+            </ul>
+          </div>
+        )}
+        {p.howItWorks && (
+          <div class="detail-block reveal">
+            <h2>Cómo funciona</h2>
+            <ol class="steps steps--compact">
+              {p.howItWorks.map((s, i) => (
+                <li class="step">
+                  <span class="step-number">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 class="step-title">{s.title}</h3>
+                  <p class="step-desc">{s.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
+      <aside class="detail-aside reveal">
+        <div class="aside-item">
+          <h3>Estado</h3>
+          <p><StatusBadge status={p.status} /></p>
+          {p.note && <p class="aside-note">{p.note}</p>}
+        </div>
+        {p.pricingNote && (
+          <div class="aside-item">
+            <h3>Cómo se cobra</h3>
+            <p>{p.pricingNote}</p>
+          </div>
+        )}
+        {action && <a class="btn btn-primary" href={action.href}>{action.label}</a>}
+      </aside>
+    </div>
+  </section>
+</PageLayout>

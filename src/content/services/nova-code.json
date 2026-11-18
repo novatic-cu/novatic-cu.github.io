@@ -1,0 +1,23 @@
+{
+  "order": 1,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVACode",
+  "name": "Desarrollo a medida",
+  "summary": "Aplicaciones y sistemas hechos para su proceso, con alcance acordado por escrito.",
+  "lead": "Programamos lo que su empresa necesita: un sistema interno, una aplicación web, una integración entre programas que hoy no se hablan. Antes de escribir código, acordamos por escrito qué se construirá y cómo se aprobará.",
+  "includes": [
+    "Especificación escrita con criterios de aceptación",
+    "Prototipo para validar antes de construir",
+    "Desarrollo y pruebas por hitos",
+    "Documentación y traspaso a su equipo",
+    "Garantía posterior a la entrega"
+  ],
+  "outcomes": [
+    "Un sistema adaptado a cómo trabaja su empresa",
+    "Cada entrega verificable contra lo acordado",
+    "Código y documentación que usted puede mantener"
+  ],
+  "audience": "Empresas con procesos manuales que quieren digitalizar, o con sistemas que necesitan conectar.",
+  "billing": "Por proyecto, con pagos por hitos; o bolsa de horas para trabajo continuo."
+}

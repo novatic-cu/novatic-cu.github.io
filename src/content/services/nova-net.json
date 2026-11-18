@@ -1,0 +1,23 @@
+{
+  "order": 4,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVANet y NOVASec",
+  "name": "Redes y videovigilancia",
+  "summary": "Redes estables y cámaras que usted puede ver desde donde esté.",
+  "lead": "Diseñamos e instalamos la red de su local u oficina y los sistemas de cámaras, y se los entregamos probados y documentados.",
+  "includes": [
+    "Levantamiento del local y diseño de la red",
+    "Instalación y configuración de equipos",
+    "Cámaras y grabación con acceso remoto",
+    "Pruebas y entrega con documentación",
+    "Mantenimiento opcional"
+  ],
+  "outcomes": [
+    "Conexión estable en todo el local",
+    "Vigilancia de su negocio con acceso remoto",
+    "Instalación documentada, fácil de mantener"
+  ],
+  "audience": "Locales comerciales, oficinas y almacenes.",
+  "billing": "Por proyecto; mantenimiento opcional con cuota mensual."
+}

@@ -1,0 +1,21 @@
+---
+import { getContent } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+const { process } = await getContent();
+---
+
+<section class="section" id="como-trabajamos">
+  <div class="container">
+    <SectionHead kicker={process.kicker} title={process.title} />
+    <ol class="steps">
+      {process.steps.map((s, i) => (
+        <li class="step reveal">
+          <span class="step-number">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="step-title">{s.title}</h3>
+          <p class="step-desc">{s.desc}</p>
+        </li>
+      ))}
+    </ol>
+    {process.note && <p class="section-note reveal">{process.note}</p>}
+  </div>
+</section>

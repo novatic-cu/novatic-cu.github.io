@@ -1,0 +1,36 @@
+{
+  "order": 0,
+  "featured": true,
+  "public": true,
+  "status": "proximamente",
+  "name": "NOVASend",
+  "tagline": "Flota a disposición para su aplicación.",
+  "summary": "Integre la entrega a domicilio en su aplicación mediante una API. NOVATIC pone la flota; usted paga por el acceso.",
+  "features": [
+    "Despacho por API: usted envía el trabajo con origen, destino y requisitos del vehículo",
+    "Asignación de mensajeros por zona, disponibilidad y calificación",
+    "Seguimiento de cada entrega",
+    "Entorno de pruebas incluido con el acceso"
+  ],
+  "howItWorks": [
+    {
+      "title": "Solicite acceso",
+      "desc": "Cuéntenos qué necesita entregar y dónde."
+    },
+    {
+      "title": "Integre en pruebas",
+      "desc": "Conecte su aplicación a la API en el entorno de pruebas."
+    },
+    {
+      "title": "Despache entregas",
+      "desc": "Sus pedidos los lleva la flota de NOVATIC."
+    },
+    {
+      "title": "Pague por el acceso",
+      "desc": "Una cuota mensual y una tarifa por cada entrega adicional."
+    }
+  ],
+  "pricingNote": "Cobro: cuota mensual de acceso, con entorno de pruebas, más una tarifa por cada entrega adicional. Los precios se acuerdan por contrato.",
+  "ctaLabel": "Solicitar acceso anticipado",
+  "ctaSubject": "Acceso anticipado a NOVASend"
+}

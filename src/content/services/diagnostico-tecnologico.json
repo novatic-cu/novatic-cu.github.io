@@ -1,0 +1,21 @@
+{
+  "order": 0,
+  "featured": true,
+  "public": true,
+  "brandName": "NOVATIC",
+  "name": "Diagnóstico tecnológico",
+  "summary": "Una semana para saber dónde está su empresa y qué conviene hacer primero.",
+  "lead": "Revisamos sus sistemas, su red y sus procesos, y le entregamos un plan por escrito. Es la forma más simple de empezar a trabajar juntos, sin comprometerse a un proyecto grande.",
+  "includes": [
+    "Revisión de sistemas, redes y procesos",
+    "Informe con hallazgos y riesgos",
+    "Plan de mejora priorizado, con alcance y plazos",
+    "Reunión para presentar resultados"
+  ],
+  "outcomes": [
+    "Sabe qué funciona, qué falla y qué riesgos tiene",
+    "Recibe un plan priorizado que puede ejecutar con nosotros o con quien prefiera"
+  ],
+  "audience": "Empresas que no saben por dónde empezar o que quieren una segunda opinión.",
+  "billing": "Tarifa fija. Si contrata el proyecto con NOVATIC, se descuenta de su precio."
+}

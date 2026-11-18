@@ -1,18 +1,18 @@
 ---
-import { getContent } from '../lib/content';
+import { asset, getContent, link } from '../lib/content';
 import BrandLogo from './BrandLogo.astro';
 const { brand, nav } = await getContent();
 ---
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a class="brand" href="#top" aria-label={brand.name}>
+    <a class="brand" href={asset('/')} aria-label={brand.name}>
       <BrandLogo />
     </a>
-    <nav class="nav" id="mainNav">
-      {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}
+    <nav class="nav" id="mainNav" aria-label="Principal">
+      {nav.items.map((n) => <a href={link(n.href)}>{n.label}</a>)}
     </nav>
-    <a class="btn btn-sm btn-primary" href={brand.navCtaHref}>{brand.navCta}</a>
+    <a class="btn btn-sm btn-primary" href={link(brand.navCtaHref)}>{brand.navCta}</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span>
     </button>
@@ -20,6 +20,6 @@ const { brand, nav } = await getContent();
 </header>
 
 <div class="mobile-nav" id="mobileNav">
-  {nav.items.map((n) => <a href={n.href}>{n.label}</a>)}
-  <a class="btn btn-primary" href={brand.navCtaHref}>{brand.navCta}</a>
+  {nav.items.map((n) => <a href={link(n.href)}>{n.label}</a>)}
+  <a class="btn btn-primary" href={link(brand.navCtaHref)}>{brand.navCta}</a>
 </div>

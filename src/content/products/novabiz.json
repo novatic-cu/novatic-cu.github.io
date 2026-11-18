@@ -1,0 +1,10 @@
+{
+  "order": 10,
+  "featured": false,
+  "public": false,
+  "status": "desarrollo",
+  "name": "NOVABiz",
+  "tagline": "ERP para empresas cubanas, sin conexión.",
+  "summary": "ERP para empresas cubanas, sin conexión.",
+  "features": []
+}

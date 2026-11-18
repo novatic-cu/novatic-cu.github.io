@@ -1,0 +1,21 @@
+{
+  "order": 6,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVAFix",
+  "name": "Soporte técnico",
+  "summary": "Equipos y sistemas funcionando, con respuesta cuando los necesita.",
+  "lead": "Reparamos, limpiamos y configuramos los equipos de su empresa. Para empresas, ofrecemos planes de soporte con tiempos de respuesta acordados.",
+  "includes": [
+    "Reparación de equipos y software",
+    "Antivirus y limpieza de sistemas",
+    "Instalación y configuración de sistemas operativos",
+    "Plan de soporte para empresas con respuesta acordada"
+  ],
+  "outcomes": [
+    "Menos tiempo de trabajo perdido por fallas",
+    "Un contacto fijo para sus problemas técnicos"
+  ],
+  "audience": "Cualquier negocio que dependa de computadoras para trabajar.",
+  "billing": "Por hora o por proyecto; plan mensual para empresas."
+}

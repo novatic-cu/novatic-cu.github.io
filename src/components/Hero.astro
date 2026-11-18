@@ -1,5 +1,5 @@
 ---
-import { getContent, asset } from '../lib/content';
+import { asset, getContent, link } from '../lib/content';
 const { hero } = await getContent();
 ---
 
@@ -13,8 +13,8 @@ const { hero } = await getContent();
       <h1 class="hero-title">{hero.title}</h1>
       <p class="hero-subtitle">{hero.subtitle}</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href={hero.ctaPrimaryHref}>{hero.ctaPrimary}</a>
-        <a class="btn btn-ghost" href={hero.ctaSecondaryHref}>{hero.ctaSecondary}</a>
+        <a class="btn btn-primary" href={link(hero.ctaPrimaryHref)}>{hero.ctaPrimary}</a>
+        <a class="btn btn-ghost" href={link(hero.ctaSecondaryHref)}>{hero.ctaSecondary}</a>
       </div>
     </div>
     <div class="hero-visual">

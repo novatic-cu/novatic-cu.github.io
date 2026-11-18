@@ -1,29 +1,29 @@
 {
   "kicker": "Ciego de Ávila · Cuba",
-  "title": "El ecosistema operativo del empresariado cubano.",
-  "subtitle": "Marketplace, logística de última milla y software empresarial en una sola infraestructura. Diseñada para compañías que operan con estándares exigentes.",
-  "ctaPrimary": "Solicitar acceso",
-  "ctaSecondary": "Explorar plataforma",
+  "title": "Servicios tecnológicos y software para empresas cubanas.",
+  "subtitle": "Desarrollo a medida, infraestructura, redes, marca y soporte. Un solo proveedor, con propuesta por escrito y entrega por hitos.",
+  "ctaPrimary": "Solicitar propuesta",
+  "ctaPrimaryHref": "#contacto",
+  "ctaSecondary": "Ver servicios",
+  "ctaSecondaryHref": "/servicios/",
   "image": "/images/hero.svg",
+  "imageAlt": "NOVATIC",
+  "badge": {
+    "label": "Sede",
+    "value": "Ciego de Ávila"
+  },
   "stats": [
     {
-      "value": "03",
-      "label": "Mundos integrados"
-    },
-    {
-      "value": "10+",
-      "label": "Servicios activos"
+      "value": "8",
+      "label": "Líneas de servicio"
     },
     {
       "value": "CU",
-      "label": "Operación nacional"
+      "label": "Datos alojados en Cuba"
+    },
+    {
+      "value": "B2B",
+      "label": "Contratos para empresas"
     }
-  ],
-  "ctaPrimaryHref": "#contacto",
-  "ctaSecondaryHref": "#plataforma",
-  "imageAlt": "NOVATIC",
-  "badge": {
-    "label": "Operación",
-    "value": "CU · ES"
-  }
+  ]
 }

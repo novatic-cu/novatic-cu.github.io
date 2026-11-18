@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // Salida 100 % estática (`dist/`): sirve igual en GitHub Pages y en un VPS (nginx/Caddy).
 // Variables opcionales al compilar:
@@ -9,4 +10,5 @@ export default defineConfig({
   site: process.env.SITE_URL ?? 'https://novatic-cu.github.io',
   base: process.env.BASE_PATH ?? '/',
   output: 'static',
+  integrations: [sitemap()],
 });

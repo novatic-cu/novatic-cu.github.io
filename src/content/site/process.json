@@ -1,0 +1,23 @@
+{
+  "kicker": "Cómo trabajamos",
+  "title": "De la primera conversación a la entrega.",
+  "steps": [
+    {
+      "title": "Conversación inicial",
+      "desc": "Nos cuenta qué necesita y cómo trabaja hoy."
+    },
+    {
+      "title": "Propuesta por escrito",
+      "desc": "Alcance, plazos y modalidad de cobro, antes de comprometerse."
+    },
+    {
+      "title": "Contrato",
+      "desc": "Formalizamos lo acordado. Verificamos a la empresa contratante."
+    },
+    {
+      "title": "Entrega y soporte",
+      "desc": "Entregamos por hitos, verificables contra lo acordado, y damos soporte después."
+    }
+  ],
+  "note": "Las capacitaciones y los despliegues se cobran aparte."
+}

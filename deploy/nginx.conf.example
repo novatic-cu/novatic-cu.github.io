@@ -1,0 +1,31 @@
+# Sitio estático de NOVATIC en un VPS con nginx.
+# 1) pnpm build  (con SITE_URL=https://su-dominio)   2) copiar dist/ al VPS   3) activar este server.
+# HTTPS: certbot --nginx -d su-dominio   (o usar el Caddyfile.example, que lo hace solo).
+server {
+    listen 80;
+    server_name su-dominio.cu www.su-dominio.cu;   # <-- ajustar al dominio real
+
+    root /var/www/novatic/dist;
+    index index.html;
+
+    gzip on;
+    gzip_types text/css application/javascript image/svg+xml application/json text/plain;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+
+    # Archivos con hash en el nombre: caché de un año.
+    location /_astro/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    location ~* \.(svg|png|ico|woff2)$ {
+        expires 30d;
+    }
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+}

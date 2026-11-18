@@ -1,0 +1,24 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  /** Muestra la sección de contacto al final (por defecto sí; el menú enlaza a #contacto). */
+  contact?: boolean;
+}
+const { contact = true, ...meta } = Astro.props;
+---
+
+<Base {...meta}>
+  <Header />
+  <main>
+    <slot />
+    {contact && <ContactSection />}
+  </main>
+  <Footer />
+</Base>

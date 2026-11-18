@@ -1,0 +1,11 @@
+---
+import { STATUS_LABEL } from '../lib/content';
+
+interface Props {
+  status: string;
+  dark?: boolean;
+}
+const { status, dark = false } = Astro.props;
+---
+
+<span class:list={['status', `status--${status}`, { 'status--on-dark': dark }]}>{STATUS_LABEL[status] ?? status}</span>

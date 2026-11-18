@@ -1,0 +1,66 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { asset, getContent, getServices, mailto } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const services = await getServices();
+  return services.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, others: services.filter((s) => s.id !== entry.id).slice(0, 3) },
+  }));
+}
+
+const { entry, others } = Astro.props;
+const s = entry.data;
+const { contact } = await getContent();
+---
+
+<PageLayout title={`${s.name} — NOVATIC`} description={s.summary}>
+  <PageHero
+    kicker={s.brandName}
+    title={s.name}
+    lead={s.summary}
+    crumbs={[{ label: 'Servicios', href: asset('/servicios/') }, { label: s.name }]}
+  />
+  <section class="section">
+    <div class="container detail">
+      <div class="detail-main">
+        <p class="detail-lead reveal">{s.lead}</p>
+        <div class="detail-block reveal">
+          <h2>Qué incluye</h2>
+          <ul class="check-list">
+            {s.includes.map((i) => <li>{i}</li>)}
+          </ul>
+        </div>
+        <div class="detail-block reveal">
+          <h2>Qué obtiene</h2>
+          <ul class="check-list">
+            {s.outcomes.map((o) => <li>{o}</li>)}
+          </ul>
+        </div>
+      </div>
+      <aside class="detail-aside reveal">
+        <div class="aside-item">
+          <h3>Para quién es</h3>
+          <p>{s.audience}</p>
+        </div>
+        <div class="aside-item">
+          <h3>Cómo se cobra</h3>
+          <p>{s.billing}</p>
+          <p class="aside-note">El precio se acuerda por contrato.</p>
+        </div>
+        <a class="btn btn-primary" href={mailto(contact.email, `Propuesta: ${s.name}`)}>Solicitar propuesta</a>
+      </aside>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="mini-title">Otros servicios</h2>
+      <div class="offers">
+        {others.map((o) => <ServiceCard entry={o} />)}
+      </div>
+    </div>
+  </section>
+</PageLayout>

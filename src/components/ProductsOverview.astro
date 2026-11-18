@@ -1,0 +1,23 @@
+---
+import { getContent, getProducts } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+import ProductCard from './ProductCard.astro';
+
+const { sections } = await getContent();
+const head = sections.products;
+const products = await getProducts();
+const featured = products.filter((p) => p.data.featured);
+const others = products.filter((p) => !p.data.featured);
+---
+
+<section class="section section-alt" id="productos">
+  <div class="container">
+    <SectionHead kicker={head.kicker} title={head.title} subtitle={head.subtitle} />
+    {featured.map((p) => <ProductCard entry={p} />)}
+    {others.length > 0 && (
+      <div class="products-row">
+        {others.map((p) => <ProductCard entry={p} />)}
+      </div>
+    )}
+  </div>
+</section>

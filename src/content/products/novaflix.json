@@ -1,0 +1,19 @@
+{
+  "order": 1,
+  "featured": false,
+  "public": true,
+  "status": "alpha",
+  "name": "NovaFlix",
+  "tagline": "Explorador de escritorio para catálogos multimedia públicos.",
+  "summary": "Busque, guarde y descargue contenido de catálogos públicos con una interfaz rápida. Funciona en Linux y Windows, sin cuenta y con descargas reanudables.",
+  "features": [
+    "Búsqueda instantánea sobre un índice local",
+    "Favoritos y listas",
+    "Descargas con reanudación",
+    "Linux y Windows",
+    "Gratis para uso no comercial"
+  ],
+  "note": "Versión 2.0.0-alpha.2: puede tener fallos.",
+  "href": "https://novatic-cu.github.io/NovaFlix/",
+  "hrefLabel": "Abrir NovaFlix"
+}

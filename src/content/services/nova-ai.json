@@ -1,0 +1,22 @@
+{
+  "order": 7,
+  "featured": false,
+  "public": true,
+  "brandName": "NOVAAI y NOVABot",
+  "name": "Automatización e inteligencia artificial",
+  "summary": "Atención a clientes automática por WhatsApp y Telegram.",
+  "lead": "Instalamos bots que responden preguntas frecuentes, toman pedidos y le pasan a una persona lo que no pueden resolver. Los conectamos con sus sistemas y los ajustamos con las conversaciones reales.",
+  "includes": [
+    "Bots de WhatsApp y Telegram para atención y pedidos",
+    "Respuestas automáticas a preguntas frecuentes",
+    "Inteligencia artificial por consumo",
+    "Integración con sus sistemas",
+    "Ajuste según las conversaciones reales"
+  ],
+  "outcomes": [
+    "Respuesta inmediata a sus clientes, a cualquier hora",
+    "Menos tiempo dedicado a preguntas repetidas"
+  ],
+  "audience": "Negocios con mucha atención repetitiva a clientes.",
+  "billing": "Instalación única y consumo mensual."
+}
