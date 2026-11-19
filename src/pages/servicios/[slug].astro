@@ -40,6 +40,39 @@ const { contact } = await getContent();
             {s.outcomes.map((o) => <li>{o}</li>)}
           </ul>
         </div>
+        {s.option && (
+          <div class="detail-block option reveal">
+            <span class="option-label">{s.option.label}</span>
+            <h2>{s.option.title}</h2>
+            <p class="option-lead">{s.option.lead}</p>
+            <div class="option-points">
+              {s.option.points.map((p) => (
+                <div class="option-point">
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </div>
+              ))}
+            </div>
+            <h3 class="option-sub">Cómo funciona</h3>
+            <ol class="option-steps">
+              {s.option.steps.map((st) => <li>{st}</li>)}
+            </ol>
+            <h3 class="option-sub">{s.option.example.title}</h3>
+            <div class="option-table-wrap">
+              <table class="option-table">
+                <thead>
+                  <tr>{s.option.example.head.map((h) => <th>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {s.option.example.rows.map((r) => (
+                    <tr>{r.map((c) => <td>{c}</td>)}</tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="aside-note">{s.option.note}</p>
+          </div>
+        )}
       </div>
       <aside class="detail-aside reveal">
         <div class="aside-item">

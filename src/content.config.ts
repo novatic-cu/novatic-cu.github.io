@@ -126,6 +126,22 @@ export const collections = {
       outcomes: z.array(z.string()).min(1),
       audience: z.string(),
       billing: z.string(),
+      /** Opción comercial del servicio (p. ej. co-desarrollo). Bloque aparte en la página del servicio. */
+      option: z
+        .object({
+          label: z.string(),
+          title: z.string(),
+          lead: z.string(),
+          points: z.array(z.object({ title: z.string(), desc: z.string() })).min(1),
+          steps: z.array(z.string()).min(1),
+          example: z.object({
+            title: z.string(),
+            head: z.array(z.string()).length(3),
+            rows: z.array(z.array(z.string()).length(3)).min(1),
+          }),
+          note: z.string(),
+        })
+        .optional(),
     }),
   }),
 

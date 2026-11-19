@@ -19,5 +19,65 @@
     "Código y documentación que usted puede mantener"
   ],
   "audience": "Empresas con procesos manuales que quieren digitalizar, o con sistemas que necesitan conectar.",
-  "billing": "Por proyecto, con pagos por hitos; o bolsa de horas para trabajo continuo."
+  "billing": "Por proyecto, con pagos por hitos; o bolsa de horas para trabajo continuo.",
+  "option": {
+    "label": "Opción · Co-desarrollo",
+    "title": "Programa de co-desarrollo",
+    "lead": "Cuando un desarrollo a medida resulta ser una herramienta que otras empresas también usarían, usted puede elegir esta opción: paga menos por el desarrollo y participa de los ingresos que la herramienta genere. Es opcional y se acuerda por escrito antes de firmar.",
+    "points": [
+      {
+        "title": "Una rebaja de hasta el 20 %",
+        "desc": "Sobre el precio del proyecto. Nunca es gratis."
+      },
+      {
+        "title": "Un porcentaje de los ingresos",
+        "desc": "Entre el 2 % y el 8 %, según la capacidad de la herramienta de generarlos; en casos muy buenos, del 10 % al 12 %."
+      },
+      {
+        "title": "Uso gratis el primer año",
+        "desc": "Sin límites funcionales para su organización."
+      },
+      {
+        "title": "Desde el segundo año",
+        "desc": "Paga solo mantenimiento e infraestructura, con un 60 % a 75 % de descuento."
+      }
+    ],
+    "steps": [
+      "El equipo de NOVATIC evalúa, al inicio, si el desarrollo es una herramienta.",
+      "Si lo es, le presentamos la opción con la rebaja y el porcentaje concretos.",
+      "Usted decide: acepta, o contrata el desarrollo estándar al precio completo.",
+      "Si acepta, la herramienta queda como propiedad de NOVATIC, que la mantiene y comercializa."
+    ],
+    "example": {
+      "title": "Ejemplo ilustrativo",
+      "head": [
+        "Concepto",
+        "Desarrollo estándar",
+        "Co-desarrollo"
+      ],
+      "rows": [
+        [
+          "Precio del desarrollo",
+          "10 000",
+          "8 000 (rebaja del 20 %)"
+        ],
+        [
+          "Propiedad de la herramienta",
+          "Suya",
+          "NOVATIC"
+        ],
+        [
+          "Primer año de uso",
+          "Suyo",
+          "Gratis, sin límites funcionales"
+        ],
+        [
+          "Si la herramienta genera 10 000 al año",
+          "No aplica",
+          "Usted recibe entre 200 y 800"
+        ]
+      ]
+    },
+    "note": "Las cifras son un ejemplo y las condiciones están en validación. Cada caso se acuerda por contrato antes de firmar."
+  }
 }
